@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLAM Implementation - Devin Pham</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="nav-link">About</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="cv.html" class="nav-link">CV</a></li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="icon sun-icon">
+                        <img src="pictures/sun.svg" alt="Sun">
+                    </div>
+                    <div class="icon moon-icon">
+                        <img src="pictures/moon.svg" alt="Moon">
+                    </div>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container project-detail">
+        <a href="projects.html" class="back-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Projects
+        </a>
+
+        <div class="hero">
+            <h1>SLAM Implementation</h1>
+            <h2>Simultaneous Localization and Mapping using particle filters</h2>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1000&h=400&fit=crop&crop=center" alt="SLAM Implementation" class="project-hero-image">
+        </div>
+
+        <div class="project-content">
+            <div class="project-section">
+                <h3>Project Overview</h3>
+                <p>Implemented a custom SLAM system for indoor mapping and localization using particle filters and graph optimization. The system processes LiDAR and IMU data to build accurate maps while simultaneously tracking robot position in unknown environments.</p>
+                
+                <div class="tech-stack">
+                    <span class="tech-item">Computer Vision</span>
+                    <span class="tech-item">ROS</span>
+                    <span class="tech-item">C++</span>
+                    <span class="tech-item">OpenCV</span>
+                    <span class="tech-item">PCL</span>
+                    <span class="tech-item">Eigen</span>
+                </div>
+            </div>
+
+            <div class="project-section">
+                <h3>Technical Implementation</h3>
+                <p>The SLAM system integrates multiple algorithms:</p>
+                <ul>
+                    <li>Particle filter for robust state estimation</li>
+                    <li>Scan matching using ICP (Iterative Closest Point)</li>
+                    <li>Loop closure detection with feature matching</li>
+                    <li>Graph optimization using g2o framework</li>
+                    <li>Multi-resolution mapping for efficiency</li>
+                    <li>Real-time map updates and corrections</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Real-time mapping of environments up to 500m²</li>
+                    <li>Sub-centimeter localization accuracy</li>
+                    <li>Robust operation in dynamic environments</li>
+                    <li>Loop closure detection and correction</li>
+                    <li>Multi-floor building support</li>
+                    <li>Integration with navigation stack</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Results & Impact</h3>
+                <p>The system successfully mapped complex indoor environments with 95% accuracy compared to ground truth. The optimized particle filter implementation achieved real-time performance on standard hardware, enabling practical deployment in robotic applications.</p>
+                
+                <div class="project-links">
+                    <a href="#" class="project-link">View Code</a>
+                    <a href="#" class="project-link secondary">Technical Report</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

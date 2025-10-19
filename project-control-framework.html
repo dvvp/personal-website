@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal Control Framework - Devin Pham</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="nav-link">About</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="cv.html" class="nav-link">CV</a></li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="icon sun-icon">
+                        <img src="pictures/sun.svg" alt="Sun">
+                    </div>
+                    <div class="icon moon-icon">
+                        <img src="pictures/moon.svg" alt="Moon">
+                    </div>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container project-detail">
+        <a href="projects.html" class="back-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Projects
+        </a>
+
+        <div class="hero">
+            <h1>Optimal Control Framework</h1>
+            <h2>Flexible framework for solving optimal control problems</h2>
+            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1000&h=400&fit=crop&crop=center" alt="Optimal Control Framework" class="project-hero-image">
+        </div>
+
+        <div class="project-content">
+            <div class="project-section">
+                <h3>Project Overview</h3>
+                <p>Developed a comprehensive framework for solving optimal control problems using various numerical methods including Differential Dynamic Programming (DDP) and iterative Linear Quadratic Regulator (iLQR). The framework provides a unified interface for trajectory optimization across different robotic systems.</p>
+                
+                <div class="tech-stack">
+                    <span class="tech-item">Optimization</span>
+                    <span class="tech-item">Python</span>
+                    <span class="tech-item">Julia</span>
+                    <span class="tech-item">NumPy</span>
+                    <span class="tech-item">SciPy</span>
+                    <span class="tech-item">CasADi</span>
+                </div>
+            </div>
+
+            <div class="project-section">
+                <h3>Technical Implementation</h3>
+                <p>The framework includes multiple optimization algorithms:</p>
+                <ul>
+                    <li>Differential Dynamic Programming (DDP) for nonlinear systems</li>
+                    <li>Iterative Linear Quadratic Regulator (iLQR)</li>
+                    <li>Sequential Quadratic Programming (SQP) methods</li>
+                    <li>Direct collocation for trajectory optimization</li>
+                    <li>Automatic differentiation for gradient computation</li>
+                    <li>Parallel computing support for large problems</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Support for constrained and unconstrained problems</li>
+                    <li>Multiple shooting and single shooting methods</li>
+                    <li>Real-time optimization capabilities</li>
+                    <li>Integration with robotic simulation frameworks</li>
+                    <li>Comprehensive benchmarking and validation</li>
+                    <li>Extensible architecture for custom algorithms</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Results & Impact</h3>
+                <p>The framework successfully solved complex trajectory optimization problems for various robotic systems, achieving 50% faster convergence compared to existing implementations. It has been used in multiple research projects and industrial applications.</p>
+                
+                <div class="project-links">
+                    <a href="#" class="project-link">View Code</a>
+                    <a href="#" class="project-link secondary">Documentation</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

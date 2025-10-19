@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human-Robot Collaboration - Devin Pham</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="nav-link">About</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="cv.html" class="nav-link">CV</a></li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="icon sun-icon">
+                        <img src="pictures/sun.svg" alt="Sun">
+                    </div>
+                    <div class="icon moon-icon">
+                        <img src="pictures/moon.svg" alt="Moon">
+                    </div>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container project-detail">
+        <a href="projects.html" class="back-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Projects
+        </a>
+
+        <div class="hero">
+            <h1>Human-Robot Collaboration</h1>
+            <h2>Predictive models for safe human-robot interaction</h2>
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1000&h=400&fit=crop&crop=center" alt="Human-Robot Collaboration" class="project-hero-image">
+        </div>
+
+        <div class="project-content">
+            <div class="project-section">
+                <h3>Project Overview</h3>
+                <p>Developed predictive models for human motion to enable safe and efficient collaboration between humans and robots in shared workspaces. The system uses computer vision and machine learning to anticipate human actions and adapt robot behavior accordingly.</p>
+                
+                <div class="tech-stack">
+                    <span class="tech-item">ML</span>
+                    <span class="tech-item">Safety</span>
+                    <span class="tech-item">HRI</span>
+                    <span class="tech-item">OpenCV</span>
+                    <span class="tech-item">PyTorch</span>
+                    <span class="tech-item">ROS</span>
+                </div>
+            </div>
+
+            <div class="project-section">
+                <h3>Technical Implementation</h3>
+                <p>The collaboration system incorporates several advanced techniques:</p>
+                <ul>
+                    <li>Human pose estimation using OpenPose</li>
+                    <li>Motion prediction using LSTM networks</li>
+                    <li>Intention recognition from gaze and gesture analysis</li>
+                    <li>Dynamic safety zones around humans</li>
+                    <li>Adaptive robot speed and trajectory planning</li>
+                    <li>Real-time collision avoidance algorithms</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Sub-second human motion prediction</li>
+                    <li>Multi-person tracking and interaction modeling</li>
+                    <li>Adaptive safety margins based on human behavior</li>
+                    <li>Natural language interface for task communication</li>
+                    <li>Learning from human demonstrations</li>
+                    <li>Integration with industrial robot arms</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Results & Impact</h3>
+                <p>The system achieved 90% accuracy in predicting human intentions 2 seconds in advance, enabling proactive robot behavior adaptation. Safety incidents were reduced by 75% compared to traditional reactive approaches, while maintaining high task efficiency.</p>
+                
+                <div class="project-links">
+                    <a href="#" class="project-link">View Code</a>
+                    <a href="#" class="project-link secondary">Research Paper</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Devin Pham</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="nav-link">About</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="cv.html" class="nav-link active">CV</a></li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="icon sun-icon">
+                        <img src="pictures/sun.svg" alt="Sun">
+                    </div>
+                    <div class="icon moon-icon">
+                        <img src="pictures/moon.svg" alt="Moon">
+                    </div>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="hero">
+            <h1>Curriculum Vitae</h1>
+            <h2>Education, Experience & Skills</h2>
+        </div>
+
+        <div class="cv-section">
+            <h2>Education</h2>
+            <div class="cv-item">
+                <h3>Bachelor of Science in Robotics Engineering</h3>
+                <div class="date">2020 - 2024</div>
+                <p>Focus on control systems, machine learning, and autonomous systems. Senior thesis on "Optimization-Based Control for Legged Robots."</p>
+                <ul>
+                    <li>GPA: 3.9/4.0</li>
+                    <li>Dean's List all semesters</li>
+                    <li>Robotics Research Award 2023</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h2>Experience</h2>
+            <div class="cv-item">
+                <h3>Robotics Engineer Intern</h3>
+                <div class="date">Summer 2023</div>
+                <p>Worked on developing perception and planning systems for autonomous mobile robots in warehouse environments.</p>
+                <ul>
+                    <li>Implemented multi-robot coordination algorithms</li>
+                    <li>Optimized path planning performance by 40%</li>
+                    <li>Deployed solutions on fleet of 20+ robots</li>
+                </ul>
+            </div>
+            <div class="cv-item">
+                <h3>Research Assistant - Robotics Lab</h3>
+                <div class="date">2022 - 2024</div>
+                <p>Conducted research on learning-based control methods for underactuated systems.</p>
+                <ul>
+                    <li>Published 2 papers in major robotics conferences</li>
+                    <li>Developed novel MPC algorithms for quadrotor control</li>
+                    <li>Mentored 3 undergraduate students</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cv-section">
+            <h2>Technical Skills</h2>
+            <div class="cv-item">
+                <h3>Programming Languages</h3>
+                <p>Python, C++, MATLAB, Julia, JavaScript</p>
+            </div>
+            <div class="cv-item">
+                <h3>Frameworks & Tools</h3>
+                <p>ROS/ROS2, PyTorch, TensorFlow, OpenCV, PCL, Gazebo, MuJoCo, Git</p>
+            </div>
+            <div class="cv-item">
+                <h3>Core Competencies</h3>
+                <p>Control Theory, Optimization, Machine Learning, Computer Vision, Path Planning, SLAM, Reinforcement Learning</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
