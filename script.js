@@ -136,6 +136,12 @@ themeToggle.addEventListener('click', () => {
     
     // Toggle the active class for animation
     themeToggle.classList.toggle('active');
+    
+    // Dispatch custom event for theme change
+    const themeChangeEvent = new CustomEvent('themeChanged', {
+        detail: { theme: newTheme }
+    });
+    document.dispatchEvent(themeChangeEvent);
 });
 
 // Rise animation functionality
