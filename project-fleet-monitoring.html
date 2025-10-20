@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotic Arm Control - Devin Pham</title>
+    <title>Cloud-Hosted Fleet Monitoring and Control App for Mobile Robots - Devin Pham</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <script>
@@ -34,15 +34,16 @@
         </a>
 
         <div class="hero">
-            <h1>Robotic Arm Control</h1>
-            <h2>6-DOF manipulator with inverse kinematics and collision avoidance</h2>
+            <h1>Cloud-Hosted Fleet Monitoring and Control App for Mobile Robots</h1>
+            <h2>Real-time fleet management dashboard with cloud-based monitoring and control capabilities</h2>
             
             <!-- Image Gallery -->
             <div class="project-gallery">
                 <div class="gallery-container">
-                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1000&h=400&fit=crop&crop=center" alt="Robotic Arm Control" data-caption="6-DOF UR5e robotic arm performing precision pick-and-place tasks" class="gallery-image">
-                    <img src="https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=1000&h=400&fit=crop&crop=center" alt="Inverse Kinematics Solver" data-caption="Real-time inverse kinematics computation with sub-millimeter accuracy" class="gallery-image">
-                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1000&h=400&fit=crop&crop=center" alt="Collision Avoidance System" data-caption="Dynamic obstacle detection and collision-free trajectory planning" class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1000&h=400&fit=crop&crop=center" alt="Cloud-Hosted Fleet Monitoring and Control App for Mobile Robots" data-caption="Fleet monitoring dashboard showing real-time robot locations and status" class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&h=400&fit=crop&crop=center" alt="Cloud Infrastructure" data-caption="Cloud-based infrastructure for scalable robot fleet management" class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1000&h=400&fit=crop&crop=center" alt="Mobile App Interface" data-caption="Mobile application for remote robot monitoring and control" class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1000&h=400&fit=crop&crop=center" alt="Analytics Dashboard" data-caption="Analytics dashboard with performance metrics and fleet insights" class="gallery-image">
                 </div>
                 
                 <!-- Navigation Arrows -->
@@ -58,7 +59,7 @@
                 </button>
                 
                 <!-- Image Counter -->
-                <div class="gallery-counter">1 / 3</div>
+                <div class="gallery-counter">1 / 4</div>
                 
                 <!-- Info Button -->
                 <button class="gallery-info-btn" aria-label="Toggle image information">i</button>
@@ -71,6 +72,7 @@
                     <span class="gallery-indicator"></span>
                     <span class="gallery-indicator"></span>
                     <span class="gallery-indicator"></span>
+                    <span class="gallery-indicator"></span>
                 </div>
             </div>
         </div>
@@ -78,50 +80,50 @@
         <div class="project-content">
             <div class="project-section">
                 <h3>Project Overview</h3>
-                <p>Developed a comprehensive control system for a 6-degree-of-freedom robotic manipulator, implementing advanced inverse kinematics algorithms and real-time collision avoidance. The system enables precise manipulation tasks in cluttered environments while maintaining safety constraints.</p>
+                <p>Developed a comprehensive cloud-hosted application for monitoring and controlling fleets of mobile robots. The system provides real-time visibility into robot status, location tracking, performance analytics, and remote control capabilities through both web and mobile interfaces.</p>
                 
                 <div class="tech-stack">
-                    <span class="tech-item">Control Theory</span>
-                    <span class="tech-item">MATLAB</span>
-                    <span class="tech-item">Optimization</span>
-                    <span class="tech-item">Simulink</span>
-                    <span class="tech-item">ROS</span>
-                    <span class="tech-item">MoveIt</span>
+                    <span class="tech-item">React</span>
+                    <span class="tech-item">Node.js</span>
+                    <span class="tech-item">AWS</span>
+                    <span class="tech-item">WebSocket</span>
+                    <span class="tech-item">MongoDB</span>
+                    <span class="tech-item">Docker</span>
                 </div>
             </div>
 
             <div class="project-section">
                 <h3>Technical Implementation</h3>
-                <p>The control system incorporates several advanced techniques:</p>
+                <p>The fleet monitoring system integrates multiple components:</p>
                 <ul>
-                    <li>Analytical inverse kinematics solver for UR5e robotic arm</li>
-                    <li>Numerical optimization for redundant configurations</li>
-                    <li>Real-time collision detection using bounding box algorithms</li>
-                    <li>Trajectory smoothing with cubic spline interpolation</li>
-                    <li>Joint velocity and acceleration limiting</li>
-                    <li>Workspace boundary enforcement</li>
+                    <li>Real-time WebSocket connections for live robot data streaming</li>
+                    <li>Cloud-based infrastructure using AWS services (EC2, RDS, S3)</li>
+                    <li>RESTful API for robot communication and data management</li>
+                    <li>Interactive dashboard with real-time mapping and status updates</li>
+                    <li>Mobile-responsive design for field operations</li>
+                    <li>Automated alerting system for maintenance and error conditions</li>
                 </ul>
             </div>
 
             <div class="project-section">
                 <h3>Key Features</h3>
                 <ul>
-                    <li>Sub-millimeter positioning accuracy</li>
-                    <li>Real-time collision avoidance at 100Hz</li>
-                    <li>Support for complex pick-and-place operations</li>
-                    <li>Integration with vision systems for object detection</li>
-                    <li>Adaptive trajectory planning based on obstacle density</li>
-                    <li>Comprehensive safety monitoring and emergency stops</li>
+                    <li>Real-time fleet tracking with GPS and sensor data integration</li>
+                    <li>Performance analytics and reporting dashboard</li>
+                    <li>Remote robot control and task assignment</li>
+                    <li>Automated maintenance scheduling and alerts</li>
+                    <li>Multi-tenant architecture supporting multiple fleets</li>
+                    <li>Mobile app for field technicians and operators</li>
                 </ul>
             </div>
 
             <div class="project-section">
                 <h3>Results & Impact</h3>
-                <p>The system successfully performed complex manipulation tasks in cluttered environments with 99.7% success rate. The optimized inverse kinematics solver reduced computation time by 60% compared to traditional numerical methods, enabling real-time control applications.</p>
+                <p>The system successfully managed fleets of up to 50 robots simultaneously, reducing operational overhead by 60% through automated monitoring and maintenance scheduling. The cloud-based architecture enables scalable deployment across multiple facilities with centralized management capabilities.</p>
                 
                 <div class="project-links">
                     <a href="#" class="project-link">View Code</a>
-                    <a href="#" class="project-link secondary">Technical Paper</a>
+                    <a href="#" class="project-link secondary">Live Demo</a>
                 </div>
             </div>
         </div>
