@@ -1,3 +1,120 @@
+// Gradient Descent Loading Screen
+function showGradientDescentLoader() {
+    // Array of different loading phrases
+    const loadingPhrases = [
+        "Optimizing page weights...",
+        "Descending gradients to render UI...",        
+        "Computing optimal layout...",
+        "Converging to stable page state...",
+        "Minimizing page loss function...",
+        "Training interface parameters...", 
+        "Performing gradient updates on page elements..."
+    ];
+    
+    // Randomly select a phrase
+    const randomPhrase = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
+    
+    // Create loader overlay
+    const loader = document.createElement('div');
+    loader.id = 'gradient-descent-loader';
+    loader.innerHTML = `
+        <div class="loader-content">
+            <div class="loader-title">${randomPhrase}</div>
+            <div class="loader-logs" id="loaderLogs"></div>
+            <div class="loader-progress">
+                <div class="loader-progress-bar" id="loaderProgressBar"></div>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(loader);
+
+    const logsContainer = document.getElementById('loaderLogs');
+    const progressBar = document.getElementById('loaderProgressBar');
+    
+    // Generate gradient descent logs
+    const iterations = 10;
+    let currentIter = 0;
+    
+    // Initial values
+    let loss = 12.345678;
+    let gradNorm = 4.567890;
+    const lr = 0.010000;
+    
+    function addLog() {
+        if (currentIter <= iterations) {
+            const iter = currentIter * 100;
+            const logLine = document.createElement('div');
+            logLine.className = 'log-line';
+            logLine.textContent = `Iter ${String(iter).padStart(4, '0')} | Loss: ${loss.toFixed(6)} | Grad Norm: ${gradNorm.toFixed(6)} | LR: ${lr.toFixed(6)}`;
+            logsContainer.appendChild(logLine);
+            
+            // Scroll to bottom after DOM update
+            setTimeout(() => {
+                logsContainer.scrollTop = logsContainer.scrollHeight;
+            }, 10);
+            
+            // Update progress bar
+            const progress = (currentIter / iterations) * 100;
+            progressBar.style.width = `${progress}%`;
+            
+            // Decay loss and grad norm (simulating convergence)
+            loss = loss * 0.7 + Math.random() * 0.1;
+            gradNorm = gradNorm * 0.65 + Math.random() * 0.05;
+            
+            currentIter++;
+            
+            if (currentIter <= iterations) {
+                setTimeout(addLog, 80 + Math.random() * 40); // Random delay between 80-120ms
+            } else {
+                // Add final message
+                setTimeout(() => {
+                    const finalLine = document.createElement('div');
+                    finalLine.className = 'log-line success';
+                    finalLine.textContent = '✓ Training complete! Loading page...';
+                    logsContainer.appendChild(finalLine);
+                    
+                    // Scroll to bottom after DOM update
+                    setTimeout(() => {
+                        logsContainer.scrollTop = logsContainer.scrollHeight;
+                    }, 10);
+                    
+                    // Fade out and remove loader
+                    setTimeout(() => {
+                        loader.style.opacity = '0';
+                        setTimeout(() => {
+                            loader.remove();
+                        }, 300);
+                    }, 400);
+                }, 200);
+            }
+        }
+    }
+    
+    // Start logging after a short delay
+    setTimeout(addLog, 300);
+}
+
+// Add gradient descent loader to project links
+document.addEventListener('DOMContentLoaded', function() {
+    // Find all project card links
+    const projectLinks = document.querySelectorAll('.project-card');
+    
+    projectLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent immediate navigation
+            const href = this.getAttribute('href');
+            
+            // Show loader
+            showGradientDescentLoader();
+            
+            // Navigate after loader completes
+            setTimeout(() => {
+                window.location.href = href;
+            }, 2000); // Wait for loader to complete (about 2 seconds)
+        });
+    });
+});
+
 // Theme toggle functionality
 const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
@@ -144,7 +261,7 @@ function initTypingAnimation() {
     const typingElement = document.querySelector('.typing-animation');
     if (!typingElement) return;
 
-    const texts = ['Robotics Engineer', 'Prospective Graduate Student'];
+    const texts = ['Robotics Engineer', 'Data Scientist', 'AI/ML Researcher', 'Prospective Graduate Student'];
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;

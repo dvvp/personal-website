@@ -308,8 +308,8 @@ nav a.active {
 
 .profile-picture {
     flex-shrink: 0;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 8px 32px var(--shadow);
@@ -634,6 +634,33 @@ nav a.active {
     font-weight: bold;
 }
 
+/* Overview section custom styling */
+.overview-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.overview-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: baseline;
+}
+
+.overview-label {
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.overview-content {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     nav {
@@ -677,8 +704,8 @@ nav a.active {
     }
 
     .profile-picture {
-        width: 300px;
-        height: 300px;
+        width: 250px;
+        height: 250px;
         align-self: center;
     }
 
@@ -746,6 +773,19 @@ nav a.active {
     .cv-left .location::before {
         content: '• ';
         margin: 0 4px;
+    }
+
+    .overview-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .overview-label {
+        font-size: 13px;
+    }
+
+    .overview-content {
+        font-size: 15px;
     }
 }
 
@@ -1430,6 +1470,32 @@ html {
     color: white;
 }
 
+/* Fix for touch devices - prevent hover state from sticking */
+@media (hover: none) and (pointer: coarse) {
+    .gallery-nav:hover {
+        background: var(--glass-bg);
+        transform: translateY(-50%) scale(1);
+        box-shadow: 0 4px 16px var(--shadow);
+    }
+    
+    .gallery-nav:hover svg {
+        stroke: var(--text-primary);
+    }
+    
+    .gallery-info-btn:hover {
+        background: var(--glass-bg);
+        color: var(--text-primary);
+        transform: scale(1);
+        box-shadow: 0 4px 16px var(--shadow);
+    }
+    
+    /* Preserve active state for info button */
+    .gallery-info-btn.active:hover {
+        background: var(--accent);
+        color: white;
+    }
+}
+
 @media (max-width: 768px) {
     .project-gallery {
         height: 250px;
@@ -1476,7 +1542,7 @@ html {
     .gallery-caption {
         top: 10px;
         left: 50px;
-        max-width: calc(100% - 80px);
+        max-width: calc(100% - 140px);
         padding: 10px 16px;
         font-size: 12px;
     }
@@ -1487,5 +1553,130 @@ html {
         width: 32px;
         height: 32px;
         font-size: 16px;
+    }
+}
+
+/* Gradient Descent Loading Screen */
+#gradient-descent-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-primary);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.loader-content {
+    max-width: 800px;
+    width: 90%;
+    padding: 40px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px var(--shadow);
+}
+
+.loader-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+.loader-logs {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 20px;
+    height: 320px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border: 1px solid var(--glass-border);
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.log-line {
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    animation: fadeInLog 0.2s ease;
+}
+
+.log-line.success {
+    color: #34C759;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+@keyframes fadeInLog {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.loader-progress {
+    width: 100%;
+    height: 8px;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+.loader-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #ff2d55);
+    width: 0%;
+    transition: width 0.1s ease;
+    border-radius: 4px;
+}
+
+/* Scrollbar styling for loader logs */
+.loader-logs::-webkit-scrollbar {
+    width: 8px;
+}
+
+.loader-logs::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+    border-radius: 4px;
+}
+
+.loader-logs::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+}
+
+.loader-logs::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .loader-content {
+        padding: 24px;
+    }
+    
+    .loader-title {
+        font-size: 18px;
+    }
+    
+    .loader-logs {
+        height: 240px;
+        padding: 16px;
+        font-size: 11px;
     }
 }
