@@ -261,7 +261,7 @@ function initTypingAnimation() {
     const typingElement = document.querySelector('.typing-animation');
     if (!typingElement) return;
 
-    const texts = ['Robotics Engineer', 'Data Scientist', 'AI/ML Researcher', 'Prospective Graduate Student'];
+    const texts = ['Robotics Engineer 🤖', 'Data Scientist 📊', 'AI/ML Researcher 🧠', 'Prospective Graduate Student 🎓'];
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
