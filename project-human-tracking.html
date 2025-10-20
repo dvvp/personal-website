@@ -35,7 +35,7 @@
 
         <div class="hero">
             <h1>Camera-Based Human Tracking and Following Algorithm for Mobile Robots</h1>
-            <h2>Autonomous ground vehicle (AGV) following system using Ultralytic's YOLOv11 human tracking model</h2>
+            <h2>Autonomous ground vehicle (AGV) following system using CNNs and Range Imaging</h2>
             
             <!-- Image Gallery -->
             <div class="project-gallery">
@@ -80,46 +80,51 @@
         <div class="project-content">
             <div class="project-section">
                 <h3>Project Overview</h3>
-                <p>Developed a comprehensive autonomous navigation system for mobile robots operating in dynamic environments. The system combines advanced path planning algorithms with real-time control to enable safe and efficient navigation through complex scenarios including moving obstacles and changing terrain.</p>
+                <p>Developed a camera-based human tracking pipeline to enable the safe and efficient relocation of airport robots. This algorithm detects and tracks human movement in real time using a CNN and a 3D depth camera to create a dynamic path plan.</p>
                 
                 <div class="tech-stack">
                     <span class="tech-item">ROS</span>
                     <span class="tech-item">Python</span>
-                    <span class="tech-item">C++</span>
+                    <span class="tech-item">HTML</span>
+                    <span class="tech-item">JS</span>
                     <span class="tech-item">OpenCV</span>
                     <span class="tech-item">Gazebo</span>
-                    <span class="tech-item">MoveIt</span>
+                    <span class="tech-item">Computer Vision</span>
+                    <span class="tech-item">Deep Learning</span>
+                    <span class="tech-item">YOLO</span>
+                    <span class="tech-item">HRI</span>
+                    <span class="tech-item">CUDA</span>
                 </div>
             </div>
 
             <div class="project-section">
                 <h3>Technical Implementation</h3>
-                <p>The navigation system integrates multiple components:</p>
+                <p>The human tracking system integrates multiple components:</p>
                 <ul>
-                    <li>RRT* (Rapidly-exploring Random Tree) algorithm for global path planning</li>
-                    <li>Model Predictive Control (MPC) for local trajectory optimization</li>
-                    <li>Dynamic obstacle detection using LiDAR and camera fusion</li>
-                    <li>Real-time path replanning when obstacles are detected</li>
-                    <li>Velocity and acceleration constraints for smooth motion</li>
-                    <li>Multi-robot coordination for fleet management</li>
+                    <li>Developed a ROS2 node that subscribes to an Intel RealSense D455's RGB and depth streams along with the camera info containing its camera intrinsics</li>
+                    <li>Used Ultralytic's YOLOv11 tracking model to publish an annotated image and an ENU pose</li>
+                    <li>Created a Python script to generate custom Gazebo SDF worlds for simulation</li>
+                    <li>Built and optimized CUDA-enabled Dockerfiles to enable GPU-acceleration on an NVIDIA Jetson Orin NX</li>
+                    <li>Built an app using HTML and Javascript to adjust parameters, toggle tracking, and visualize the current person being tracked in real time</li>
                 </ul>
             </div>
 
             <div class="project-section">
                 <h3>Key Features</h3>
                 <ul>
-                    <li>Sub-second path planning for environments up to 100m²</li>
-                    <li>Dynamic obstacle avoidance with 95% success rate</li>
-                    <li>Real-time performance on embedded hardware (Raspberry Pi 4)</li>
-                    <li>Integration with ROS navigation stack</li>
-                    <li>Support for multiple robot platforms</li>
-                    <li>Comprehensive simulation testing in Gazebo</li>
+                    <li>Distinguishes between multiple people in a scene</li>
+                    <li>Detection publishes at 10hz with GPU-acceleration enabled</li>
+                    <li>Maintains a fixed distance between the robot and the tracked person (adaptive cruise control)</li>
+                    <li>Seamless integration with ROS navigation stack</li>
+                    <li>Comprehensive testing in simulation as well as real life</li>
+                    <li>Tracking parameters can be adjusted before tracking is toggled</li>
+                    <li>Visualization occurs in real time</li>
                 </ul>
             </div>
 
             <div class="project-section">
                 <h3>Results & Impact</h3>
-                <p>The system successfully navigated robots through complex warehouse environments with moving obstacles, achieving 40% faster path completion compared to traditional A* algorithms while maintaining safety margins. The modular design allows for easy integration into existing robotic systems.</p>
+                <p>The system successfully worked on the sim as well as the real robot. In the future, I plan to enhance the system's capabilities by integrating gesture-based control to remove the dependence of a carried mobile device and enabling more intuitive human-robot interaction. Additionally, implementing facial recognition will allow the system to identify authorized personnel, ensuring only those approved can be followed which will enhance overall security.</p>
                 
                 <div class="project-links">
                     <a href="#" class="project-link">View Code</a>

@@ -478,5 +478,42 @@ function initGallery() {
     });
 }
 
+// Handle View Code button click for private projects
+document.addEventListener('DOMContentLoaded', function() {
+    // List of pages that should show private behavior
+    const privatePages = [
+        'project-human-tracking.html',
+        // Add more pages here as needed
+        // 'project-fleet-monitoring.html',
+    ];
+    
+    // Check if current page is in the private pages list
+    const isPrivatePage = privatePages.some(page => window.location.pathname.includes(page));
+    
+    if (isPrivatePage) {
+        const viewCodeButton = document.querySelector('.project-link');
+        if (viewCodeButton && viewCodeButton.textContent.trim() === 'View Code') {
+            viewCodeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Store original text and disable button
+                const originalText = this.textContent;
+                this.disabled = true;
+                this.style.pointerEvents = 'none';
+                
+                // Change to private message
+                this.textContent = '🔒 Private';
+                
+                // Reset after 1 second
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.disabled = false;
+                    this.style.pointerEvents = 'auto';
+                }, 1000);
+            });
+        }
+    }
+});
+
 // Initialize gallery when DOM is loaded
 document.addEventListener('DOMContentLoaded', initGallery);
