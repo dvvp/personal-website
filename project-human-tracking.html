@@ -39,7 +39,7 @@
         <!-- Project Header -->
         <div class="project-header">
             <h1>Camera-Based Human Tracking and Following Algorithm for Mobile Robots</h1>
-            <p class="project-one-liner">Autonomous ground vehicle (AGV) following system using CNNs and Range Imaging</p>
+            <p class="project-one-liner">Autonomous ground vehicle (AGV) following system using YOLOv11 and Range Imaging</p>
             
             <!-- Project Tags -->
             <div class="project-tags">
@@ -61,14 +61,14 @@
         <div class="project-gallery" id="projectGallery">
             <!-- Gallery Images -->
             <div class="gallery-container">
-                <div class="gallery-image active" data-caption="Real-time human detection and tracking using YOLOv11">
-                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop&crop=center" alt="Human tracking visualization">
+                <div class="gallery-image active" data-caption="Real-time detection, tracking and following in the sim">
+                    <video src="pictures/human_tracking_sim.mov" autoplay loop muted playsinline></video>
                 </div>
-                <div class="gallery-image" data-caption="ROS2 node architecture and data flow">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&crop=center" alt="ROS2 architecture">
+                <div class="gallery-image" data-caption="Real-time detection and tracking in the real world">
+                    <video src="pictures/human_tracking_irl_detection.mp4" autoplay loop muted playsinline></video>
                 </div>
-                <div class="gallery-image" data-caption="Gazebo simulation environment with custom SDF world">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop&crop=center" alt="Gazebo simulation">
+                <div class="gallery-image" data-caption="Robot autonomously following me around the neighborhood 😎">
+                    <video src="pictures/human_tracking_timelapse.mp4" autoplay loop muted playsinline></video>
                 </div>
                 
                 <!-- Navigation Arrows -->
@@ -96,7 +96,7 @@
                 
                 <!-- Caption -->
                 <div class="gallery-caption" id="galleryCaption">
-                    <p>Real-time human detection and tracking using YOLOv11</p>
+                    <p>Real-time detection, tracking and following in the sim</p>
                 </div>
                 
                 <!-- Fullscreen Button -->
@@ -109,7 +109,7 @@
         <!-- Project Overview -->
         <div class="project-section">
             <h2>Project Overview</h2>
-            <p>Developed a camera-based human tracking pipeline to enable the safe and efficient relocation of airport robots. This algorithm detects and tracks human movement in real time using a CNN and a 3D depth camera to create a dynamic path plan.</p>
+            <p>Developed a camera-based human tracking pipeline to enable the safe and efficient relocation of airport robots. This algorithm detects and tracks human movement in real time using Ultralytic's YOLOv11 model and a 3D depth camera to create a dynamic path plan.</p>
         </div>
 
         <!-- Technical Implementation -->
