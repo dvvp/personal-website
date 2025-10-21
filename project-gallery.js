@@ -203,14 +203,39 @@ document.addEventListener('DOMContentLoaded', () => {
     new ProjectGallery();
 });
 
+// GitHub repository mapping
+const GITHUB_REPOSITORIES = {
+    // 'project-human-tracking.html': 'https://github.com/dvvp/human-tracking-robot',
+    // 'project-fleet-monitoring.html': 'https://github.com/dvvp/fleet-monitoring-system',
+    // Add more project mappings here as needed
+    // 'project-example.html': 'https://github.com/dvvp/example-repo',
+};
+
 // View Code button functionality
 document.addEventListener('DOMContentLoaded', () => {
     const viewCodeBtn = document.getElementById('viewCodeBtn');
     if (viewCodeBtn) {
         viewCodeBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // For now, just show an alert. In a real implementation, this would link to the repository
-            alert('Code repository will be available soon!');
+            
+            // Get the current page filename
+            const currentPage = window.location.pathname.split('/').pop();
+            
+            // Check if there's a GitHub repository mapped for this project
+            if (GITHUB_REPOSITORIES[currentPage]) {
+                // Open the GitHub repository in a new tab
+                window.open(GITHUB_REPOSITORIES[currentPage], '_blank', 'noopener,noreferrer');
+            } else {
+                // Show custom modal for projects without repositories
+                showModal({
+                    title: 'Code is <strong>private</strong>',
+                    message: 'Reach out if you need access.',
+                    buttonText: 'Got it'
+                });
+            }
         });
     }
 });
+
+// Import showModal function from helpers
+import { showModal } from './helpers.js';
