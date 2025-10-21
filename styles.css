@@ -1545,6 +1545,40 @@ html {
     height: 24px;
 }
 
+/* Fullscreen bottom controls positioning */
+.project-gallery.fullscreen .gallery-bottom-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background: transparent;
+}
+
+.project-gallery.fullscreen .page-counter {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+.project-gallery.fullscreen .fullscreen-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.project-gallery.fullscreen .fullscreen-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.project-gallery.fullscreen .gallery-caption {
+    display: none;
+}
+
 /* Responsive Design for Project Page */
 @media (max-width: 768px) {
     .back-button-container {
@@ -1765,11 +1799,16 @@ html {
     
     .gallery-btn:hover {
         background: rgba(255, 255, 255, 0.1);
-        transform: scale(1);
+        transform: translateY(0);
+        box-shadow: none;
     }
     
-    .gallery-btn:hover .info-icon,
+    .gallery-btn:hover .info-icon {
+        color: inherit !important;
+    }
+    
     .gallery-btn:hover .fullscreen-icon {
+        filter: none;
         transform: scale(1);
     }
     
@@ -1781,6 +1820,8 @@ html {
     .gallery-nav:hover {
         background: rgba(255, 255, 255, 0.1);
         transform: translateY(-50%) scale(1);
+        box-shadow: none;
+        color: inherit;
     }
     
     .gallery-dot:hover {
