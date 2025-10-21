@@ -680,7 +680,15 @@ nav a.active {
     }
 
     .container {
-        padding: 100px 20px 100px;
+        padding: 100px 20px 20px;
+    }
+
+    /* Make theme toggle static on mobile */
+    .theme-toggle-container {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin: 40px 0 20px;
     }
 
     .about-section {
@@ -787,6 +795,16 @@ nav a.active {
 
     .overview-content {
         font-size: 15px;
+    }
+
+    /* Make footer static on mobile */
+    footer {
+        position: static !important;
+        transform: none !important;
+        margin: 20px auto !important;
+        width: fit-content !important;
+        bottom: auto !important;
+        left: auto !important;
     }
 }
 
