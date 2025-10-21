@@ -39,7 +39,7 @@
         <!-- Project Header -->
         <div class="project-header">
             <h1>Camera-Based Human Tracking and Following Algorithm for Mobile Robots</h1>
-            <p class="project-one-liner">Autonomous ground vehicle (AGV) following system using YOLOv11 and Range Imaging</p>
+            <p class="project-one-liner">Autonomous ground vehicle (AGV) following system using CNNs and Range Imaging</p>
             
             <!-- Project Tags -->
             <div class="project-tags">
@@ -62,7 +62,7 @@
             <!-- Gallery Images -->
             <div class="gallery-container">
                 <div class="gallery-image active" data-caption="Real-time human detection and tracking using YOLOv11">
-                    <img src="pictures/devinpham.jpeg" alt="Human tracking visualization">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop&crop=center" alt="Human tracking visualization">
                 </div>
                 <div class="gallery-image" data-caption="ROS2 node architecture and data flow">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&crop=center" alt="ROS2 architecture">
@@ -85,39 +85,31 @@
                 
                 <!-- Dot Navigation -->
                 <div class="gallery-dots" id="galleryDots"></div>
+            </div>
+            
+            <!-- Bottom Controls -->
+            <div class="gallery-bottom-controls">
+                <!-- Page Counter -->
+                <div class="page-counter">
+                    <span id="currentPage">1</span> / <span id="totalPages">3</span>
+                </div>
                 
-                <!-- Caption (Always Visible) -->
+                <!-- Caption -->
                 <div class="gallery-caption" id="galleryCaption">
                     <p>Real-time human detection and tracking using YOLOv11</p>
                 </div>
                 
-                <!-- Top Controls -->
-                <div class="gallery-top-controls">
-                    <!-- Caption Toggle Button (Upper Left) -->
-                    <button class="gallery-btn caption-toggle" id="captionToggle" aria-label="Toggle caption visibility">
-                        <img src="pictures/captions-on.svg" alt="Captions" class="caption-icon" id="captionIcon">
-                    </button>
-                    
-                    <!-- Page Counter (Upper Right) -->
-                    <div class="page-counter">
-                        <span id="currentPage">1</span> / <span id="totalPages">3</span>
-                    </div>
-                </div>
-                
-                <!-- Bottom Right Controls -->
-                <div class="gallery-bottom-right-controls">
-                    <!-- Fullscreen Button -->
-                    <button class="gallery-btn fullscreen-toggle" id="fullscreenToggle" aria-label="Toggle fullscreen">
-                        <img src="pictures/maximize-white.svg" alt="Fullscreen" class="fullscreen-icon" id="fullscreenIcon">
-                    </button>
-                </div>
+                <!-- Fullscreen Button -->
+                <button class="gallery-btn fullscreen-toggle" id="fullscreenToggle" aria-label="Toggle fullscreen">
+                    <img src="pictures/maximize-black.svg" alt="Fullscreen" class="fullscreen-icon" id="fullscreenIcon">
+                </button>
             </div>
         </div>
 
         <!-- Project Overview -->
         <div class="project-section">
             <h2>Project Overview</h2>
-            <p>Developed a camera-based human tracking pipeline to enable the safe and efficient relocation of airport robots. This algorithm detects and tracks human movement in real time using Ultralytic's YOLOv11 and a 3D depth camera to create a dynamic path plan.</p>
+            <p>Developed a camera-based human tracking pipeline to enable the safe and efficient relocation of airport robots. This algorithm detects and tracks human movement in real time using a CNN and a 3D depth camera to create a dynamic path plan.</p>
         </div>
 
         <!-- Technical Implementation -->
@@ -172,7 +164,7 @@
 
     <!-- Scroll to Top Button -->
     <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
-        <img src="pictures/chevron-up-white.svg" alt="Scroll to top" class="scroll-icon">
+        <img src="pictures/chevron-up-black.svg" alt="Scroll to top" class="scroll-icon">
     </button>
 
     <!-- Footer -->
@@ -181,205 +173,6 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Gallery functionality
-        class ProjectGallery {
-            constructor() {
-                this.currentIndex = 0;
-                this.images = document.querySelectorAll('.gallery-image');
-                this.totalImages = this.images.length;
-                this.captionVisible = true;
-                this.isFullscreen = false;
-                
-                this.init();
-            }
-            
-            init() {
-                this.createDots();
-                this.updatePageCounter();
-                this.updateDots();
-                this.bindEvents();
-                this.updateThemeIcons();
-            }
-            
-            createDots() {
-                const dotsContainer = document.getElementById('galleryDots');
-                dotsContainer.innerHTML = '';
-                
-                for (let i = 0; i < this.totalImages; i++) {
-                    const dot = document.createElement('button');
-                    dot.className = 'gallery-dot';
-                    dot.setAttribute('aria-label', `Go to image ${i + 1}`);
-                    dot.addEventListener('click', () => {
-                        this.currentIndex = i;
-                        this.showImage(i);
-                    });
-                    dotsContainer.appendChild(dot);
-                }
-            }
-            
-            updateDots() {
-                const dots = document.querySelectorAll('.gallery-dot');
-                dots.forEach((dot, index) => {
-                    if (index === this.currentIndex) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
-            }
-            
-            bindEvents() {
-                // Navigation buttons
-                document.getElementById('prevBtn').addEventListener('click', () => this.previousImage());
-                document.getElementById('nextBtn').addEventListener('click', () => this.nextImage());
-                
-                // Fullscreen toggle
-                document.getElementById('fullscreenToggle').addEventListener('click', () => this.toggleFullscreen());
-                
-                // Caption toggle
-                document.getElementById('captionToggle').addEventListener('click', () => this.toggleCaption());
-                
-                // Keyboard navigation
-                document.addEventListener('keydown', (e) => {
-                    if (this.isFullscreen || document.activeElement.tagName === 'BODY') {
-                        switch(e.key) {
-                            case 'ArrowLeft':
-                                e.preventDefault();
-                                this.previousImage();
-                                break;
-                            case 'ArrowRight':
-                                e.preventDefault();
-                                this.nextImage();
-                                break;
-                            case 'Escape':
-                                if (this.isFullscreen) {
-                                    this.exitFullscreen();
-                                }
-                                break;
-                        }
-                    }
-                });
-                
-                // Theme change listener
-                document.addEventListener('themeChanged', () => this.updateThemeIcons());
-            }
-            
-            showImage(index) {
-                // Hide all images
-                this.images.forEach(img => img.classList.remove('active'));
-                
-                // Show current image
-                this.images[index].classList.add('active');
-                
-                // Update caption
-                const caption = this.images[index].dataset.caption;
-                document.getElementById('galleryCaption').querySelector('p').textContent = caption;
-                
-                this.updatePageCounter();
-                this.updateDots();
-            }
-            
-            nextImage() {
-                this.currentIndex = (this.currentIndex + 1) % this.totalImages;
-                this.showImage(this.currentIndex);
-            }
-            
-            previousImage() {
-                this.currentIndex = (this.currentIndex - 1 + this.totalImages) % this.totalImages;
-                this.showImage(this.currentIndex);
-            }
-            
-            updatePageCounter() {
-                document.getElementById('currentPage').textContent = this.currentIndex + 1;
-                document.getElementById('totalPages').textContent = this.totalImages;
-            }
-            
-            
-            toggleFullscreen() {
-                if (!this.isFullscreen) {
-                    this.enterFullscreen();
-                } else {
-                    this.exitFullscreen();
-                }
-            }
-            
-            enterFullscreen() {
-                const gallery = document.getElementById('projectGallery');
-                gallery.classList.add('fullscreen');
-                this.isFullscreen = true;
-                this.updateFullscreenIcon();
-                
-                // Request fullscreen
-                if (gallery.requestFullscreen) {
-                    gallery.requestFullscreen();
-                } else if (gallery.webkitRequestFullscreen) {
-                    gallery.webkitRequestFullscreen();
-                } else if (gallery.msRequestFullscreen) {
-                    gallery.msRequestFullscreen();
-                }
-            }
-            
-            exitFullscreen() {
-                const gallery = document.getElementById('projectGallery');
-                gallery.classList.remove('fullscreen');
-                this.isFullscreen = false;
-                this.updateFullscreenIcon();
-                
-                // Exit fullscreen
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
-            }
-            
-            updateFullscreenIcon() {
-                const icon = document.getElementById('fullscreenIcon');
-                
-                if (this.isFullscreen) {
-                    icon.src = 'pictures/minimize-white.svg';
-                } else {
-                    icon.src = 'pictures/maximize-white.svg';
-                }
-            }
-            
-            toggleCaption() {
-                const caption = document.getElementById('galleryCaption');
-                const captionIcon = document.getElementById('captionIcon');
-                
-                if (this.captionVisible) {
-                    caption.classList.add('hidden');
-                    captionIcon.src = 'pictures/captions-off.svg';
-                    this.captionVisible = false;
-                } else {
-                    caption.classList.remove('hidden');
-                    captionIcon.src = 'pictures/captions-on.svg';
-                    this.captionVisible = true;
-                }
-            }
-            
-            updateThemeIcons() {
-                this.updateFullscreenIcon();
-            }
-        }
-        
-        // Initialize gallery when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            new ProjectGallery();
-        });
-        
-        // View Code button functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const viewCodeBtn = document.getElementById('viewCodeBtn');
-            viewCodeBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                // For now, just show an alert. In a real implementation, this would link to the repository
-                alert('Code repository will be available soon!');
-            });
-        });
-    </script>
+    <script src="project-gallery.js"></script>
 </body>
 </html>

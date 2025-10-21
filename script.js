@@ -316,4 +316,3 @@ function initTypingAnimation() {
 
 // Initialize typing animation when DOM is loaded
 document.addEventListener('DOMContentLoaded', initTypingAnimation);
-
