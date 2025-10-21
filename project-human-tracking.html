@@ -39,7 +39,7 @@
         <!-- Project Header -->
         <div class="project-header">
             <h1>Camera-Based Human Tracking and Following Algorithm for Mobile Robots</h1>
-            <p class="project-one-liner">Autonomous ground vehicle (AGV) following system using CNNs and Range Imaging</p>
+            <p class="project-one-liner">Autonomous ground vehicle (AGV) following system using YOLOv11 and Range Imaging</p>
             
             <!-- Project Tags -->
             <div class="project-tags">
@@ -62,7 +62,7 @@
             <!-- Gallery Images -->
             <div class="gallery-container">
                 <div class="gallery-image active" data-caption="Real-time human detection and tracking using YOLOv11">
-                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop&crop=center" alt="Human tracking visualization">
+                    <img src="pictures/devinpham.jpeg" alt="Human tracking visualization">
                 </div>
                 <div class="gallery-image" data-caption="ROS2 node architecture and data flow">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&crop=center" alt="ROS2 architecture">
@@ -85,31 +85,39 @@
                 
                 <!-- Dot Navigation -->
                 <div class="gallery-dots" id="galleryDots"></div>
-            </div>
-            
-            <!-- Bottom Controls -->
-            <div class="gallery-bottom-controls">
-                <!-- Page Counter -->
-                <div class="page-counter">
-                    <span id="currentPage">1</span> / <span id="totalPages">3</span>
-                </div>
                 
-                <!-- Caption -->
+                <!-- Caption (Always Visible) -->
                 <div class="gallery-caption" id="galleryCaption">
                     <p>Real-time human detection and tracking using YOLOv11</p>
                 </div>
                 
-                <!-- Fullscreen Button -->
-                <button class="gallery-btn fullscreen-toggle" id="fullscreenToggle" aria-label="Toggle fullscreen">
-                    <img src="pictures/maximize-black.svg" alt="Fullscreen" class="fullscreen-icon" id="fullscreenIcon">
-                </button>
+                <!-- Top Controls -->
+                <div class="gallery-top-controls">
+                    <!-- Caption Toggle Button (Upper Left) -->
+                    <button class="gallery-btn caption-toggle" id="captionToggle" aria-label="Toggle caption visibility">
+                        <img src="pictures/captions-on.svg" alt="Captions" class="caption-icon" id="captionIcon">
+                    </button>
+                    
+                    <!-- Page Counter (Upper Right) -->
+                    <div class="page-counter">
+                        <span id="currentPage">1</span> / <span id="totalPages">3</span>
+                    </div>
+                </div>
+                
+                <!-- Bottom Right Controls -->
+                <div class="gallery-bottom-right-controls">
+                    <!-- Fullscreen Button -->
+                    <button class="gallery-btn fullscreen-toggle" id="fullscreenToggle" aria-label="Toggle fullscreen">
+                        <img src="pictures/maximize-white.svg" alt="Fullscreen" class="fullscreen-icon" id="fullscreenIcon">
+                    </button>
+                </div>
             </div>
         </div>
 
         <!-- Project Overview -->
         <div class="project-section">
             <h2>Project Overview</h2>
-            <p>Developed a camera-based human tracking pipeline to enable the safe and efficient relocation of airport robots. This algorithm detects and tracks human movement in real time using a CNN and a 3D depth camera to create a dynamic path plan.</p>
+            <p>Developed a camera-based human tracking pipeline to enable the safe and efficient relocation of airport robots. This algorithm detects and tracks human movement in real time using Ultralytic's YOLOv11 and a 3D depth camera to create a dynamic path plan.</p>
         </div>
 
         <!-- Technical Implementation -->
@@ -164,7 +172,7 @@
 
     <!-- Scroll to Top Button -->
     <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
-        <img src="pictures/chevron-up-black.svg" alt="Scroll to top" class="scroll-icon">
+        <img src="pictures/chevron-up-white.svg" alt="Scroll to top" class="scroll-icon">
     </button>
 
     <!-- Footer -->
@@ -228,6 +236,9 @@
                 
                 // Fullscreen toggle
                 document.getElementById('fullscreenToggle').addEventListener('click', () => this.toggleFullscreen());
+                
+                // Caption toggle
+                document.getElementById('captionToggle').addEventListener('click', () => this.toggleCaption());
                 
                 // Keyboard navigation
                 document.addEventListener('keydown', (e) => {
@@ -327,12 +338,26 @@
             
             updateFullscreenIcon() {
                 const icon = document.getElementById('fullscreenIcon');
-                const theme = document.documentElement.getAttribute('data-theme');
                 
                 if (this.isFullscreen) {
-                    icon.src = theme === 'dark' ? 'pictures/minimize-white.svg' : 'pictures/minimize-black.svg';
+                    icon.src = 'pictures/minimize-white.svg';
                 } else {
-                    icon.src = theme === 'dark' ? 'pictures/maximize-white.svg' : 'pictures/maximize-black.svg';
+                    icon.src = 'pictures/maximize-white.svg';
+                }
+            }
+            
+            toggleCaption() {
+                const caption = document.getElementById('galleryCaption');
+                const captionIcon = document.getElementById('captionIcon');
+                
+                if (this.captionVisible) {
+                    caption.classList.add('hidden');
+                    captionIcon.src = 'pictures/captions-off.svg';
+                    this.captionVisible = false;
+                } else {
+                    caption.classList.remove('hidden');
+                    captionIcon.src = 'pictures/captions-on.svg';
+                    this.captionVisible = true;
                 }
             }
             
