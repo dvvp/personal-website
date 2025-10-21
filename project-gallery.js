@@ -78,6 +78,12 @@ class ProjectGallery {
         
         // Theme change listener
         document.addEventListener('themeChanged', () => this.updateThemeIcons());
+        
+        // Listen for browser fullscreen changes to sync internal state
+        document.addEventListener('fullscreenchange', () => this.handleFullscreenChange());
+        document.addEventListener('webkitfullscreenchange', () => this.handleFullscreenChange());
+        document.addEventListener('mozfullscreenchange', () => this.handleFullscreenChange());
+        document.addEventListener('MSFullscreenChange', () => this.handleFullscreenChange());
     }
     
     showImage(index) {
@@ -173,6 +179,21 @@ class ProjectGallery {
             setTimeout(() => {
                 galleryContainer.classList.remove('show-controls');
             }, 2000); // Show for 2 seconds
+        }
+    }
+    
+    handleFullscreenChange() {
+        // Check if the document is actually in fullscreen mode
+        const isCurrentlyFullscreen = !!(
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement
+        );
+        
+        // If browser exited fullscreen but gallery thinks it's still fullscreen
+        if (!isCurrentlyFullscreen && this.isFullscreen) {
+            this.exitFullscreen();
         }
     }
 }
