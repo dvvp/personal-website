@@ -1440,8 +1440,8 @@ html {
     justify-content: center;
     color: var(--text-primary);
     z-index: 10;
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
 }
 
 
@@ -1481,8 +1481,8 @@ html {
     border-radius: 20px;
     padding: 8px 16px;
     box-shadow: 0 4px 16px var(--shadow);
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1491,6 +1491,15 @@ html {
 .gallery-container.show-controls .gallery-dots {
     opacity: 1;
     visibility: visible;
+}
+
+/* Show controls on gallery hover (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+    .project-gallery:hover .gallery-nav,
+    .project-gallery:hover .gallery-dots {
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 .gallery-dot {
@@ -1680,6 +1689,8 @@ html {
     .gallery-nav {
         width: 36px;
         height: 36px;
+        opacity: 0;
+        visibility: hidden;
     }
     
     .gallery-nav.prev {
@@ -1699,6 +1710,8 @@ html {
         bottom: 12px;
         gap: 8px;
         padding: 6px 12px;
+        opacity: 0;
+        visibility: hidden;
     }
     
     .gallery-dot {

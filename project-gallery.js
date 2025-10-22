@@ -15,6 +15,13 @@ class ProjectGallery {
         this.captionVisible = true;
         this.isFullscreen = false;
         
+        // Touch/swipe properties
+        this.touchStartX = 0;
+        this.touchStartY = 0;
+        this.touchEndX = 0;
+        this.touchEndY = 0;
+        this.minSwipeDistance = 50; // Minimum distance for a swipe
+        
         this.init();
     }
     
@@ -23,6 +30,7 @@ class ProjectGallery {
         this.updatePageCounter();
         this.updateDots();
         this.bindEvents();
+        this.bindTouchEvents();
         this.updateThemeIcons();
     }
     
@@ -92,6 +100,41 @@ class ProjectGallery {
         document.addEventListener('webkitfullscreenchange', () => this.handleFullscreenChange());
         document.addEventListener('mozfullscreenchange', () => this.handleFullscreenChange());
         document.addEventListener('MSFullscreenChange', () => this.handleFullscreenChange());
+    }
+    
+    bindTouchEvents() {
+        const galleryContainer = document.querySelector('.gallery-container');
+        
+        if (galleryContainer) {
+            // Touch start
+            galleryContainer.addEventListener('touchstart', (e) => {
+                this.touchStartX = e.touches[0].clientX;
+                this.touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+            
+            // Touch end
+            galleryContainer.addEventListener('touchend', (e) => {
+                this.touchEndX = e.changedTouches[0].clientX;
+                this.touchEndY = e.changedTouches[0].clientY;
+                this.handleSwipe();
+            }, { passive: true });
+        }
+    }
+    
+    handleSwipe() {
+        const deltaX = this.touchEndX - this.touchStartX;
+        const deltaY = this.touchEndY - this.touchStartY;
+        
+        // Check if it's a horizontal swipe (more horizontal than vertical movement)
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > this.minSwipeDistance) {
+            if (deltaX > 0) {
+                // Swipe right - go to previous image
+                this.previousImage();
+            } else {
+                // Swipe left - go to next image
+                this.nextImage();
+            }
+        }
     }
     
     showImage(index) {

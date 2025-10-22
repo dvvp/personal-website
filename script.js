@@ -306,14 +306,9 @@ document.addEventListener('DOMContentLoaded', initTypingAnimation);
 function initSinglePageNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.page-section');
-    let isScrolling = false;
-    let scrollTimeout;
     
     // Function to update active navigation link
     function updateActiveNavLink() {
-        // Skip updating if user is currently clicking to scroll
-        if (isScrolling) return;
-        
         let currentSection = '';
         
         sections.forEach(section => {
@@ -343,32 +338,25 @@ function initSinglePageNavigation() {
     // Handle smooth scrolling for nav links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Check if this is a cross-page navigation (contains index.html)
+            if (href.includes('index.html')) {
+                // Allow normal navigation for cross-page links
+                return; // Don't prevent default, let browser handle navigation
+            }
+            
+            // For single-page navigation, prevent default and handle smooth scrolling
             e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
+            const targetId = href.substring(1);
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
-                // Set scrolling flag and immediately update active link
-                isScrolling = true;
-                
-                // Immediately set the clicked link as active
-                navLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-                
                 // Perform smooth scroll
                 targetSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
-                
-                // Clear any existing timeout
-                clearTimeout(scrollTimeout);
-                
-                // Re-enable automatic highlighting after scrolling completes
-                // (smooth scroll typically takes ~500-1000ms depending on distance)
-                scrollTimeout = setTimeout(() => {
-                    isScrolling = false;
-                }, 1000);
             }
         });
     });
