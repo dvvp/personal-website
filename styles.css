@@ -1736,7 +1736,15 @@ html {
 /* Disable hover effects on touch devices */
 @media (hover: none) and (pointer: coarse) {
     nav a:hover {
+        background: transparent;
+        transform: translateY(0);
         color: inherit;
+    }
+    
+    nav a.active:hover {
+        background: var(--accent);
+        color: white;
+        transform: translateY(0);
     }
     
     .scroll-to-top:hover {
@@ -1762,6 +1770,7 @@ html {
     
     .social-icon:hover {
         transform: translateY(0);
+        color: var(--text-primary);
     }
     
     .social-icon:hover svg {
