@@ -146,20 +146,16 @@ themeToggle.addEventListener('click', () => {
 
 // Rise animation functionality
 function initRiseAnimations() {
-    // Elements to animate
-    const animatedElements = [
-        '.about-section',
-        '.social-links', 
-        '.hero',
-        '.project-category',
-        '.project-card',
-        '.cv-section',
-        '.cv-item'
-    ];
+    // Elements to animate - organized by section
+    const sectionElements = {
+        '#about': ['.about-section', '.social-links'],
+        '#projects': ['.hero', '.project-category', '.project-card'],
+        '#cv': ['.hero', '.cv-section', '.cv-item']
+    };
 
-    // Function to add animation classes
+    // Function to add animation classes with staggered delays
     function addAnimationClasses() {
-        animatedElements.forEach(selector => {
+        Object.values(sectionElements).flat().forEach(selector => {
             const elements = document.querySelectorAll(selector);
             elements.forEach((element, index) => {
                 // Add staggered delays for multiple elements of the same type
@@ -170,45 +166,34 @@ function initRiseAnimations() {
         });
     }
 
-    // Function to trigger animations
-    function triggerAnimations() {
-        animatedElements.forEach(selector => {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach(element => {
-                element.classList.add('animate');
-            });
-        });
-    }
-
     // Intersection Observer for scroll-triggered animations
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.2, // Trigger when 20% of element is visible
+        rootMargin: '0px 0px -100px 0px' // Start animation slightly before element is fully visible
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Add animate class to trigger the rise animation
                 entry.target.classList.add('animate');
+                
+                // Stop observing this element once it's animated
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     // Observe all animated elements
-    animatedElements.forEach(selector => {
+    Object.values(sectionElements).flat().forEach(selector => {
         const elements = document.querySelectorAll(selector);
         elements.forEach(element => {
             observer.observe(element);
         });
     });
 
-    // Initial setup
+    // Initial setup - only add classes, don't trigger animations
     addAnimationClasses();
-    
-    // Trigger initial animations after a short delay
-    setTimeout(() => {
-        triggerAnimations();
-    }, 100);
 }
 
 // Initialize animations when DOM is loaded
@@ -316,3 +301,78 @@ function initTypingAnimation() {
 
 // Initialize typing animation when DOM is loaded
 document.addEventListener('DOMContentLoaded', initTypingAnimation);
+
+// Single-page navigation highlighting
+function initSinglePageNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.page-section');
+    let isScrolling = false;
+    let scrollTimeout;
+    
+    // Function to update active navigation link
+    function updateActiveNavLink() {
+        // Skip updating if user is currently clicking to scroll
+        if (isScrolling) return;
+        
+        let currentSection = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150; // Account for fixed nav
+            const sectionHeight = section.offsetHeight;
+            
+            if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+        
+        // Update nav links
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    // Update on scroll
+    window.addEventListener('scroll', updateActiveNavLink);
+    
+    // Update on page load
+    updateActiveNavLink();
+    
+    // Handle smooth scrolling for nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                // Set scrolling flag and immediately update active link
+                isScrolling = true;
+                
+                // Immediately set the clicked link as active
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Perform smooth scroll
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Clear any existing timeout
+                clearTimeout(scrollTimeout);
+                
+                // Re-enable automatic highlighting after scrolling completes
+                // (smooth scroll typically takes ~500-1000ms depending on distance)
+                scrollTimeout = setTimeout(() => {
+                    isScrolling = false;
+                }, 1000);
+            }
+        });
+    });
+}
+
+// Initialize single-page navigation when DOM is loaded
+document.addEventListener('DOMContentLoaded', initSinglePageNavigation);

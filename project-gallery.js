@@ -1,3 +1,11 @@
+// GitHub repository mapping
+const GITHUB_REPOSITORIES = {
+    // 'project-human-tracking.html': 'https://github.com/dvvp/human-tracking-robot',
+    // 'project-fleet-monitoring.html': 'https://github.com/dvvp/fleet-monitoring-system',
+    // Add more project mappings here as needed
+    // 'project-example.html': 'https://github.com/dvvp/example-repo',
+};
+
 // Gallery functionality
 class ProjectGallery {
     constructor() {
@@ -202,14 +210,6 @@ class ProjectGallery {
 document.addEventListener('DOMContentLoaded', () => {
     new ProjectGallery();
 });
-
-// GitHub repository mapping
-const GITHUB_REPOSITORIES = {
-    // 'project-human-tracking.html': 'https://github.com/dvvp/human-tracking-robot',
-    // 'project-fleet-monitoring.html': 'https://github.com/dvvp/fleet-monitoring-system',
-    // Add more project mappings here as needed
-    // 'project-example.html': 'https://github.com/dvvp/example-repo',
-};
 
 // View Code button functionality
 document.addEventListener('DOMContentLoaded', () => {

@@ -18,9 +18,9 @@
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="index.html" class="nav-link">About</a></li>
-            <li><a href="projects.html" class="nav-link">Projects</a></li>
-            <li><a href="cv.html" class="nav-link">CV</a></li>
+            <li><a href="index.html#about" class="nav-link">About</a></li>
+            <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+            <li><a href="index.html#cv" class="nav-link">CV</a></li>
         </ul>
     </nav>
 
@@ -28,7 +28,7 @@
     <div class="container">
         <!-- Back Button -->
         <div class="back-button-container">
-            <a href="projects.html" class="back-button">
+            <a href="index.html#projects" class="back-button">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
                 </svg>
@@ -61,7 +61,7 @@
         <div class="project-gallery" id="projectGallery">
             <!-- Gallery Images -->
             <div class="gallery-container">
-                <div class="gallery-image active" data-caption="Real-time detection, tracking and following in the sim">
+                <div class="gallery-image active" data-caption="Real-time tracking and following in the sim">
                     <video src="pictures/human_tracking_sim.mov" autoplay loop muted playsinline></video>
                 </div>
                 <div class="gallery-image" data-caption="Real-time detection and tracking in the real world">
@@ -96,7 +96,7 @@
                 
                 <!-- Caption -->
                 <div class="gallery-caption" id="galleryCaption">
-                    <p>Real-time detection, tracking and following in the sim</p>
+                    <p>Real-time tracking and following in the sim</p>
                 </div>
                 
                 <!-- Fullscreen Button -->
@@ -129,7 +129,7 @@
             <h2>Key Features</h2>
             <ul class="features-list">
                 <li>Distinguishes between multiple people in a scene</li>
-                <li>Detection publishes at 10hz with GPU-acceleration enabled</li>
+                <li>Detection publishes at ~10hz with GPU-acceleration enabled</li>
                 <li>Maintains a fixed distance between the robot and the tracked person (adaptive cruise control)</li>
                 <li>Seamless integration with ROS navigation stack</li>
                 <li>Comprehensive testing in simulation as well as real life</li>
