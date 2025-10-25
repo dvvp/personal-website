@@ -144,7 +144,8 @@ themeToggle.addEventListener('click', () => {
     document.dispatchEvent(themeChangeEvent);
 });
 
-// Rise animation functionality
+// Rise animation functionality - COMMENTED OUT
+/*
 function initRiseAnimations() {
     // Elements to animate - organized by section
     const sectionElements = {
@@ -205,6 +206,7 @@ if (document.readyState === 'loading') {
 } else {
     initRiseAnimations();
 }
+*/
 
 // Scroll to top button functionality
 const scrollToTopButton = document.getElementById('scrollToTop');
