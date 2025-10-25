@@ -144,57 +144,8 @@ themeToggle.addEventListener('click', () => {
     document.dispatchEvent(themeChangeEvent);
 });
 
-// Rise animation functionality - COMMENTED OUT
-/*
 function initRiseAnimations() {
-    // Elements to animate - organized by section
-    const sectionElements = {
-        '#about': ['.about-section', '.social-links'],
-        '#projects': ['.hero', '.project-category', '.project-card'],
-        '#cv': ['.hero', '.cv-section', '.cv-item']
-    };
 
-    // Function to add animation classes with staggered delays
-    function addAnimationClasses() {
-        Object.values(sectionElements).flat().forEach(selector => {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach((element, index) => {
-                // Add staggered delays for multiple elements of the same type
-                if (elements.length > 1) {
-                    element.classList.add(`delay-${Math.min(index + 1, 6)}`);
-                }
-            });
-        });
-    }
-
-    // Intersection Observer for scroll-triggered animations
-    const observerOptions = {
-        threshold: 0.2, // Trigger when 20% of element is visible
-        rootMargin: '0px 0px -100px 0px' // Start animation slightly before element is fully visible
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Add animate class to trigger the rise animation
-                entry.target.classList.add('animate');
-                
-                // Stop observing this element once it's animated
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Observe all animated elements
-    Object.values(sectionElements).flat().forEach(selector => {
-        const elements = document.querySelectorAll(selector);
-        elements.forEach(element => {
-            observer.observe(element);
-        });
-    });
-
-    // Initial setup - only add classes, don't trigger animations
-    addAnimationClasses();
 }
 
 // Initialize animations when DOM is loaded
@@ -206,7 +157,7 @@ if (document.readyState === 'loading') {
 } else {
     initRiseAnimations();
 }
-*/
+
 
 // Scroll to top button functionality
 const scrollToTopButton = document.getElementById('scrollToTop');
