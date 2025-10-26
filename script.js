@@ -329,12 +329,31 @@ function initSinglePageNavigation() {
     // First, set initial active state based on URL hash
     const hash = window.location.hash;
     if (hash) {
+        const targetId = hash.substring(1);
+        const targetSection = document.getElementById(targetId);
+        
         navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === hash) {
                 link.classList.add('active');
             }
         });
+        
+        // Scroll to the target section immediately
+        if (targetSection) {
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Wait for scroll to complete, then update active nav
+            setTimeout(() => {
+                toggleSectionsVisibility();
+                updateActiveNavLink();
+            }, 500);
+        } else {
+            updateActiveNavLink();
+        }
     } else {
         // If no hash, set "About" as active by default
         navLinks.forEach(link => {
@@ -343,8 +362,8 @@ function initSinglePageNavigation() {
                 link.classList.add('active');
             }
         });
+        updateActiveNavLink();
     }
-    updateActiveNavLink();
 
     // Smooth scroll for nav links
     navLinks.forEach(link => {
