@@ -253,10 +253,13 @@ class ProjectGallery {
     applyFullscreenIcon(isFullscreen, theme) {
         const icon = document.getElementById('fullscreenIcon');
         
+        // Detect if we're in a subdirectory (e.g., project-human-tracking/)
+        const basePath = window.location.pathname.includes('/project-') ? '../pictures/' : 'pictures/';
+        
         if (isFullscreen) {
-            icon.src = theme === 'dark' ? 'pictures/minimize-white.svg' : 'pictures/minimize-black.svg';
+            icon.src = theme === 'dark' ? `${basePath}minimize-white.svg` : `${basePath}minimize-black.svg`;
         } else {
-            icon.src = theme === 'dark' ? 'pictures/maximize-white.svg' : 'pictures/maximize-black.svg';
+            icon.src = theme === 'dark' ? `${basePath}maximize-white.svg` : `${basePath}maximize-black.svg`;
         }
     }
     
@@ -264,10 +267,13 @@ class ProjectGallery {
         if (isHovered) {
             // Use white icon on hover regardless of theme
             const icon = document.getElementById('fullscreenIcon');
+            // Detect if we're in a subdirectory (e.g., project-human-tracking/)
+            const basePath = window.location.pathname.includes('/project-') ? '../pictures/' : 'pictures/';
+            
             if (this.isFullscreen) {
-                icon.src = 'pictures/minimize-white.svg';
+                icon.src = `${basePath}minimize-white.svg`;
             } else {
-                icon.src = 'pictures/maximize-white.svg';
+                icon.src = `${basePath}maximize-white.svg`;
             }
         } else {
             // Revert to theme-based icon
