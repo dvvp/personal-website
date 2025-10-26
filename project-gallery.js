@@ -1,11 +1,3 @@
-// GitHub repository mapping
-const GITHUB_REPOSITORIES = {
-    // 'project-human-tracking.html': 'https://github.com/dvvp/human-tracking-robot',
-    // 'project-fleet-monitoring.html': 'https://github.com/dvvp/fleet-monitoring-system',
-    // Add more project mappings here as needed
-    // 'project-example.html': 'https://github.com/dvvp/example-repo',
-};
-
 // Gallery functionality
 class ProjectGallery {
     constructor() {
@@ -254,9 +246,9 @@ class ProjectGallery {
         const icon = document.getElementById('fullscreenIcon');
         
         if (isFullscreen) {
-            icon.src = theme === 'dark' ? 'pictures/minimize-white.svg' : 'pictures/minimize-black.svg';
+            icon.src = theme === 'dark' ? '../pictures/minimize-white.svg' : '../pictures/minimize-black.svg';
         } else {
-            icon.src = theme === 'dark' ? 'pictures/maximize-white.svg' : 'pictures/maximize-black.svg';
+            icon.src = theme === 'dark' ? '../pictures/maximize-white.svg' : '../pictures/maximize-black.svg';
         }
     }
     
@@ -265,9 +257,9 @@ class ProjectGallery {
             // Use white icon on hover regardless of theme
             const icon = document.getElementById('fullscreenIcon');
             if (this.isFullscreen) {
-                icon.src = 'pictures/minimize-white.svg';
+                icon.src = '../pictures/minimize-white.svg';
             } else {
-                icon.src = 'pictures/maximize-white.svg';
+                icon.src = '../pictures/maximize-white.svg';
             }
         } else {
             // Revert to theme-based icon
@@ -310,32 +302,3 @@ class ProjectGallery {
 document.addEventListener('DOMContentLoaded', () => {
     new ProjectGallery();
 });
-
-// View Code button functionality
-document.addEventListener('DOMContentLoaded', () => {
-    const viewCodeBtn = document.getElementById('viewCodeBtn');
-    if (viewCodeBtn) {
-        viewCodeBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Get the current page filename
-            const currentPage = window.location.pathname.split('/').pop();
-            
-            // Check if there's a GitHub repository mapped for this project
-            if (GITHUB_REPOSITORIES[currentPage]) {
-                // Open the GitHub repository in a new tab
-                window.open(GITHUB_REPOSITORIES[currentPage], '_blank', 'noopener,noreferrer');
-            } else {
-                // Show custom modal for projects without repositories
-                showModal({
-                    title: 'Code is <strong>private</strong>',
-                    message: 'Reach out if you need access.',
-                    buttonText: 'Got it'
-                });
-            }
-        });
-    }
-});
-
-// Import showModal function from helpers
-import { showModal } from './helpers.js';
