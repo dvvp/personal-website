@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud-Hosted Fleet Monitoring and Control App for Mobile Robots - Devin Pham</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+    <link rel="stylesheet" href="/styles.css">
+    <script>
+        // Set theme immediately to prevent flash
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="/#about" class="nav-link">About</a></li>
+            <li><a href="/#projects" class="nav-link">Projects</a></li>
+            <li><a href="/#cv" class="nav-link">CV</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Back Button -->
+        <div class="back-button-container">
+            <a href="/#projects" class="back-button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Projects
+            </a>
+        </div>
+        
+        <!-- Project Header -->
+        <div class="project-header">
+            <h1>Cloud-Hosted Fleet Monitoring and Control App for Mobile Robots</h1>
+            <p class="project-one-liner">Real-time fleet management system with web and mobile interfaces for monitoring and controlling autonomous mobile robots</p>
+            
+            <!-- Project Tags -->
+            <div class="project-tags">
+                <span class="project-tag">React</span>
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">AWS</span>
+                <span class="project-tag">JavaScript</span>
+                <span class="project-tag">HTML/CSS</span>
+                <span class="project-tag">WebSocket</span>
+                <span class="project-tag">REST API</span>
+                <span class="project-tag">MongoDB</span>
+                <span class="project-tag">Docker</span>
+            </div>
+        </div>
+
+        <!-- Image Gallery -->
+        <div class="project-gallery" id="projectGallery">
+            <!-- Swipe Hint Info Window (Touchscreen Only) -->
+            <div class="swipe-hint" id="swipeHint">
+                <img src="/pictures/info-black.svg" alt="Info" class="swipe-hint-icon light-icon">
+                <img src="/pictures/info-white.svg" alt="Info" class="swipe-hint-icon dark-icon">
+                <span class="swipe-hint-text">Swipe left or right to navigate</span>
+            </div>
+            
+            <!-- Gallery Images -->
+            <div class="gallery-container">
+                <div class="gallery-image active" data-caption="Real-time fleet dashboard showing active robots and status">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop&crop=center" alt="Fleet dashboard">
+                </div>
+                <div class="gallery-image" data-caption="Interactive map view displaying robot positions and trajectories">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&h=800&fit=crop&crop=center" alt="Map view">
+                </div>
+                <div class="gallery-image" data-caption="Analytics dashboard with performance metrics and historical data">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop&crop=center" alt="Analytics dashboard">
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <button class="gallery-nav prev" id="prevBtn" aria-label="Previous image">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15,18 9,12 15,6"></polyline>
+                    </svg>
+                </button>
+                <button class="gallery-nav next" id="nextBtn" aria-label="Next image">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                </button>
+                
+                <!-- Dot Navigation -->
+                <div class="gallery-dots" id="galleryDots"></div>
+            </div>
+            
+            <!-- Bottom Controls -->
+            <div class="gallery-bottom-controls">
+                <!-- Page Counter -->
+                <div class="page-counter">
+                    <span id="currentPage">1</span> / <span id="totalPages">3</span>
+                </div>
+                
+                <!-- Caption -->
+                <div class="gallery-caption" id="galleryCaption">
+                    <p>Real-time fleet dashboard showing active robots and status</p>
+                </div>
+                
+                <!-- Fullscreen Button -->
+                <button class="gallery-btn fullscreen-toggle" id="fullscreenToggle" aria-label="Toggle fullscreen">
+                    <img src="/pictures/maximize-black.svg" alt="Fullscreen" class="fullscreen-icon" id="fullscreenIcon">
+                </button>
+            </div>
+        </div>
+
+        <!-- Project Overview -->
+        <div class="project-section">
+            <h2>Project Overview</h2>
+            <p>Built a comprehensive cloud-based platform for real-time fleet monitoring, control, and analytics with web and mobile interfaces. The system enables operators to monitor robot statuses, track locations, analyze performance metrics, and remotely control autonomous mobile robots from anywhere.</p>
+        </div>
+
+        <!-- Technical Implementation -->
+        <div class="project-section">
+            <h2>Technical Implementation</h2>
+            <ul class="implementation-list">
+                <li>Developed a React-based web application with responsive design for real-time fleet visualization</li>
+                <li>Built a Node.js backend server with WebSocket support for bidirectional communication with robots</li>
+                <li>Implemented RESTful APIs for fleet management operations including scheduling, routing, and emergency controls</li>
+                <li>Deployed services on AWS using EC2 instances for scalable architecture</li>
+                <li>Integrated MongoDB database for storing historical data, logs, and fleet configurations</li>
+                <li>Created Docker containers for consistent deployment across development and production environments</li>
+                <li>Implemented real-time data streaming from robots to the cloud platform</li>
+                <li>Developed authentication and authorization system for secure fleet access</li>
+            </ul>
+        </div>
+
+        <!-- Key Features -->
+        <div class="project-section">
+            <h2>Key Features</h2>
+            <ul class="features-list">
+                <li>Real-time position tracking and visualization on interactive maps</li>
+                <li>Live status monitoring for battery levels, operational states, and error reporting</li>
+                <li>Performance analytics dashboard with customizable metrics and historical trends</li>
+                <li>Remote control capabilities for emergency interventions and manual overrides</li>
+                <li>Alert system for critical events and maintenance notifications</li>
+                <li>User management with role-based access control</li>
+                <li>Mobile-responsive design for on-the-go fleet management</li>
+                <li>Historical data analysis and reporting tools</li>
+            </ul>
+        </div>
+
+        <!-- Results & Future Work -->
+        <div class="project-section">
+            <h2>Results & Future Work</h2>
+            <p>The fleet monitoring system successfully enables remote management of autonomous mobile robots with real-time data visualization and control capabilities. Future enhancements include predictive maintenance using machine learning models to anticipate equipment failures, advanced route optimization algorithms to minimize travel time and energy consumption, and integration of computer vision for automated quality inspection during operations.</p>
+        </div>
+
+        <!-- View Code Button -->
+        <div class="project-actions">
+            <a href="#" class="cta-button view-code-btn" id="viewCodeBtn">View Code</a>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <div class="icon sun-icon">
+                <img src="/pictures/sun.svg" alt="Sun">
+            </div>
+            <div class="icon moon-icon">
+                <img src="/pictures/moon.svg" alt="Moon">
+            </div>
+        </button>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <img src="/pictures/chevron-up-black.svg" alt="Scroll to top" class="scroll-icon">
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <p>© Copyright 2025 Devin Pham.</p>
+    </footer>
+
+    <script type="module" src="/project-gallery.js"></script>
+    <script type="module" src="/project-fleet-monitoring/scripts.js"></script>
+</body>
+</html>
+
