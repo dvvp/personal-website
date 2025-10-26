@@ -268,8 +268,9 @@ document.addEventListener('DOMContentLoaded', initTypingAnimation);
 function initSinglePageNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.page-section');
+    let isScrolling = false;
     
-    // Function to update active navigation link
+    // Function to update active navigation link and URL hash
     function updateActiveNavLink() {
         let currentSection = '';
         
@@ -289,6 +290,12 @@ function initSinglePageNavigation() {
                 link.classList.add('active');
             }
         });
+        
+        // Update URL hash without triggering scroll
+        if (currentSection && !isScrolling) {
+            // Use replaceState to avoid adding to browser history
+            window.history.replaceState(null, null, `#${currentSection}`);
+        }
     }
     
     // Update on scroll
@@ -296,6 +303,22 @@ function initSinglePageNavigation() {
     
     // Update on page load
     updateActiveNavLink();
+    
+    // Handle initial hash if present
+    if (window.location.hash) {
+        const hash = window.location.hash.substring(1);
+        const targetSection = document.getElementById(hash);
+        if (targetSection) {
+            isScrolling = true;
+            setTimeout(() => {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                setTimeout(() => { isScrolling = false; }, 1000);
+            }, 100);
+        }
+    }
     
     // Handle smooth scrolling for nav links
     navLinks.forEach(link => {
@@ -314,7 +337,8 @@ function initSinglePageNavigation() {
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
-                // Update the browser URL
+                isScrolling = true;
+                // Use history.pushState to update URL in browser history
                 window.history.pushState(null, null, href);
                 
                 // Perform smooth scroll
@@ -322,44 +346,13 @@ function initSinglePageNavigation() {
                     behavior: 'smooth',
                     block: 'start'
                 });
+                
+                // Reset scrolling flag after animation completes
+                setTimeout(() => { isScrolling = false; }, 1000);
             }
         });
     });
 }
 
-// Handle hash URL on page load
-function handleHashOnLoad() {
-    if (window.location.hash) {
-        const hash = window.location.hash.substring(1);
-        const targetSection = document.getElementById(hash);
-        
-        if (targetSection) {
-            // Small delay to ensure page is rendered
-            setTimeout(() => {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }, 100);
-        }
-    }
-}
-
-// Handle browser back/forward buttons
-window.addEventListener('hashchange', function() {
-    const hash = window.location.hash.substring(1);
-    const targetSection = document.getElementById(hash);
-    
-    if (targetSection) {
-        targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-});
-
 // Initialize single-page navigation when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initSinglePageNavigation();
-    handleHashOnLoad();
-});
+document.addEventListener('DOMContentLoaded', initSinglePageNavigation);
