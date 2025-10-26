@@ -145,7 +145,46 @@ themeToggle.addEventListener('click', () => {
 });
 
 function initRiseAnimations() {
-
+    // Select all page sections
+    const sections = document.querySelectorAll('.page-section');
+    
+    if (sections.length === 0) return;
+    
+    // Options for Intersection Observer
+    const observerOptions = {
+        root: null,
+        rootMargin: '-100px', // Trigger a bit before element enters viewport
+        threshold: 0.1 // Trigger when 10% of the element is visible
+    };
+    
+    // Create the observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add 'rise' class when section enters viewport
+                entry.target.classList.add('rise');
+                // Unobserve after animation to prevent re-triggering
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Check if first section is already in view and add rise class immediately
+    const firstSection = sections[0];
+    const rect = firstSection.getBoundingClientRect();
+    const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+    
+    if (isInView) {
+        // If first section is in view, animate it immediately
+        setTimeout(() => {
+            firstSection.classList.add('rise');
+        }, 100);
+    }
+    
+    // Observe each section
+    sections.forEach(section => {
+        observer.observe(section);
+    });
 }
 
 // Initialize animations when DOM is loaded

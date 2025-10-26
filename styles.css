@@ -234,10 +234,19 @@ nav a.active {
 .page-section {
     margin-bottom: 120px;
     scroll-margin-top: 100px;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .page-section:last-child {
     margin-bottom: 60px;
+}
+
+.page-section.rise {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Glass cards */
