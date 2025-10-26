@@ -423,6 +423,56 @@ nav a.active {
     line-height: 1.8;
 }
 
+/* CV Download Button */
+.cv-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px var(--shadow);
+}
+
+.cv-download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--shadow);
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.cv-download-btn .download-icon {
+    width: 20px;
+    height: 20px;
+    transition: filter 0.3s ease;
+}
+
+.cv-download-btn:hover .download-icon {
+    filter: brightness(0) invert(1);
+}
+
+#cv .dark-download-icon {
+    display: none;
+}
+
+[data-theme="dark"] #cv .light-download-icon {
+    display: none;
+}
+
+[data-theme="dark"] #cv .dark-download-icon {
+    display: block;
+}
+
 .cta-button {
     display: inline-block;
     padding: 16px 36px;
@@ -766,6 +816,17 @@ nav a.active {
 
     .hero p {
         font-size: 16px;
+    }
+
+    .cv-download-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+
+    .cv-download-btn .download-icon {
+        width: 18px;
+        height: 18px;
     }
 
     .glass-card {
@@ -1917,6 +1978,18 @@ html {
     .view-code-btn:hover {
         transform: translateY(0);
         box-shadow: 0 4px 16px rgba(0, 122, 255, 0.3);
+    }
+
+    .cv-download-btn:hover {
+        transform: translateY(0);
+        box-shadow: 0 4px 16px var(--shadow);
+        background: var(--glass-bg);
+        color: var(--text-primary);
+        border-color: var(--glass-border);
+    }
+
+    .cv-download-btn:hover .download-icon {
+        filter: none;
     }
     
     .project-gallery:hover {

@@ -398,3 +398,21 @@ function initSinglePageNavigation() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', initSinglePageNavigation);
+
+// CV Download Button Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const cvDownloadBtn = document.getElementById('cvDownloadBtn');
+    
+    if (cvDownloadBtn) {
+        cvDownloadBtn.addEventListener('click', function() {
+            // Create a temporary anchor element to trigger download
+            const link = document.createElement('a');
+            link.href = 'devin_pham_cv.pdf';
+            link.download = 'devin_pham_cv.pdf';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    }
+});
