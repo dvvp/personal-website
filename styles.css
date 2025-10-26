@@ -532,11 +532,6 @@ nav a.active {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.cv-item:hover {
-    transform: translateX(8px);
-    box-shadow: 0 8px 32px var(--shadow);
-}
-
 .cv-item-two-col {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -1227,11 +1222,6 @@ html {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.project-section:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 48px var(--shadow);
-}
-
 .project-section h2 {
     font-size: 28px;
     font-weight: 700;
@@ -1379,12 +1369,6 @@ html {
     }
 }
 
-
-.project-gallery:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 48px var(--shadow);
-}
-
 .gallery-controls {
     display: flex;
     justify-content: space-between;
@@ -1425,10 +1409,6 @@ html {
 
 .gallery-btn:hover .info-icon {
     color: white !important;
-}
-
-.gallery-btn:hover .fullscreen-icon {
-    filter: brightness(0) invert(1);
 }
 
 .info-icon {
@@ -1915,11 +1895,6 @@ html {
         transform: scale(1);
     }
     
-    .cv-item:hover {
-        transform: translateX(0);
-        border-left-color: rgba(255, 255, 255, 0.2);
-    }
-    
     .back-button:hover {
         transform: translateX(0);
         color: inherit;
@@ -1928,11 +1903,7 @@ html {
     .back-button:hover svg {
         transform: translateX(0);
     }
-    
-    .project-section:hover {
-        transform: translateY(0);
-    }
-    
+
     .view-code-btn:hover {
         transform: translateY(0);
         box-shadow: 0 4px 16px rgba(0, 122, 255, 0.3);
@@ -1952,10 +1923,6 @@ html {
         color: inherit !important;
     }
     
-    .gallery-btn:hover .fullscreen-icon {
-        filter: none;
-        transform: scale(1);
-    }
     
     .gallery-image:hover img,
     .gallery-image:hover video {

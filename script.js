@@ -182,6 +182,15 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Change icon to white when button is hovered
+scrollToTopButton.addEventListener('mouseenter', () => {
+    scrollIcon.src = 'pictures/chevron-up-white.svg';
+});
+
+scrollToTopButton.addEventListener('mouseleave', () => {
+    updateScrollIcon(); // Revert to theme-based icon
+});
+
 // Scroll to top when button is clicked
 scrollToTopButton.addEventListener('click', () => {
     window.scrollTo({
@@ -203,7 +212,7 @@ function initTypingAnimation() {
     const typingElement = document.querySelector('.typing-animation');
     if (!typingElement) return;
 
-    const texts = ['Robotics Engineer 🤖', 'Data Scientist 📊', 'AI/ML Researcher 🧠', 'Prospective Graduate Student 🎓'];
+    const texts = ['Robotics Engineer 🤖', 'Data Scientist 📊', 'AI/ML Researcher 🧠', 'Full Stack Developer 👨‍💻'];
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;

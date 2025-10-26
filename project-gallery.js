@@ -70,7 +70,13 @@ class ProjectGallery {
         document.getElementById('nextBtn').addEventListener('click', () => this.nextImage());
         
         // Fullscreen toggle
-        document.getElementById('fullscreenToggle').addEventListener('click', () => this.toggleFullscreen());
+        const fullscreenToggle = document.getElementById('fullscreenToggle');
+        fullscreenToggle.addEventListener('click', () => this.toggleFullscreen());
+        
+        // Fullscreen icon hover events
+        const fullscreenIcon = document.getElementById('fullscreenIcon');
+        fullscreenToggle.addEventListener('mouseenter', () => this.setFullscreenIconHover(true));
+        fullscreenToggle.addEventListener('mouseleave', () => this.setFullscreenIconHover(false));
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
@@ -237,10 +243,35 @@ class ProjectGallery {
         const icon = document.getElementById('fullscreenIcon');
         const theme = document.documentElement.getAttribute('data-theme');
         
-        if (this.isFullscreen) {
+        // Store current state
+        this.currentIconTheme = theme;
+        this.currentIconIsFullscreen = this.isFullscreen;
+        
+        this.applyFullscreenIcon(this.currentIconIsFullscreen, this.currentIconTheme);
+    }
+    
+    applyFullscreenIcon(isFullscreen, theme) {
+        const icon = document.getElementById('fullscreenIcon');
+        
+        if (isFullscreen) {
             icon.src = theme === 'dark' ? 'pictures/minimize-white.svg' : 'pictures/minimize-black.svg';
         } else {
             icon.src = theme === 'dark' ? 'pictures/maximize-white.svg' : 'pictures/maximize-black.svg';
+        }
+    }
+    
+    setFullscreenIconHover(isHovered) {
+        if (isHovered) {
+            // Use white icon on hover regardless of theme
+            const icon = document.getElementById('fullscreenIcon');
+            if (this.isFullscreen) {
+                icon.src = 'pictures/minimize-white.svg';
+            } else {
+                icon.src = 'pictures/maximize-white.svg';
+            }
+        } else {
+            // Revert to theme-based icon
+            this.applyFullscreenIcon(this.isFullscreen, document.documentElement.getAttribute('data-theme'));
         }
     }
     
