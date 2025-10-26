@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Camera-Based Human Tracking and Following Algorithm for Mobile Robots - Devin Pham</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
     <script>
         // Set theme immediately to prevent flash
         (function() {
@@ -18,9 +18,9 @@
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="../index.html#about" class="nav-link">About</a></li>
-            <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
-            <li><a href="../index.html#cv" class="nav-link">CV</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#cv" class="nav-link">CV</a></li>
         </ul>
     </nav>
 
@@ -28,7 +28,7 @@
     <div class="container">
         <!-- Back Button -->
         <div class="back-button-container">
-            <a href="../index.html#projects" class="back-button">
+            <a href="#projects" class="back-button">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
                 </svg>
@@ -61,21 +61,21 @@
         <div class="project-gallery" id="projectGallery">
             <!-- Swipe Hint Info Window (Touchscreen Only) -->
             <div class="swipe-hint" id="swipeHint">
-                <img src="../pictures/info-black.svg" alt="Info" class="swipe-hint-icon light-icon">
-                <img src="../pictures/info-white.svg" alt="Info" class="swipe-hint-icon dark-icon">
+                <img src="pictures/info-black.svg" alt="Info" class="swipe-hint-icon light-icon">
+                <img src="pictures/info-white.svg" alt="Info" class="swipe-hint-icon dark-icon">
                 <span class="swipe-hint-text">Swipe left or right to navigate</span>
             </div>
             
             <!-- Gallery Images -->
             <div class="gallery-container">
                 <div class="gallery-image active" data-caption="Real-time tracking and following in the sim">
-                    <video src="../pictures/human_tracking_sim.mov" autoplay loop muted playsinline></video>
+                    <video src="pictures/human_tracking_sim.mov" autoplay loop muted playsinline></video>
                 </div>
                 <div class="gallery-image" data-caption="Real-time detection and tracking in the real world">
-                    <video src="../pictures/human_tracking_irl_detection.mp4" autoplay loop muted playsinline></video>
+                    <video src="pictures/human_tracking_irl_detection.mp4" autoplay loop muted playsinline></video>
                 </div>
                 <div class="gallery-image" data-caption="Robot autonomously following me around the neighborhood 😎">
-                    <video src="../pictures/human_tracking_timelapse.mp4" autoplay loop muted playsinline></video>
+                    <video src="pictures/human_tracking_timelapse.mp4" autoplay loop muted playsinline></video>
                 </div>
                 
                 <!-- Navigation Arrows -->
@@ -108,7 +108,7 @@
                 
                 <!-- Fullscreen Button -->
                 <button class="gallery-btn fullscreen-toggle" id="fullscreenToggle" aria-label="Toggle fullscreen">
-                    <img src="../pictures/maximize-black.svg" alt="Fullscreen" class="fullscreen-icon" id="fullscreenIcon">
+                    <img src="pictures/maximize-black.svg" alt="Fullscreen" class="fullscreen-icon" id="fullscreenIcon">
                 </button>
             </div>
         </div>
@@ -161,17 +161,17 @@
     <div class="theme-toggle-container">
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
             <div class="icon sun-icon">
-                <img src="../pictures/sun.svg" alt="Sun">
+                <img src="pictures/sun.svg" alt="Sun">
             </div>
             <div class="icon moon-icon">
-                <img src="../pictures/moon.svg" alt="Moon">
+                <img src="pictures/moon.svg" alt="Moon">
             </div>
         </button>
     </div>
 
     <!-- Scroll to Top Button -->
     <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
-        <img src="../pictures/chevron-up-black.svg" alt="Scroll to top" class="scroll-icon">
+        <img src="pictures/chevron-up-black.svg" alt="Scroll to top" class="scroll-icon">
     </button>
 
     <!-- Footer -->
@@ -179,7 +179,7 @@
         <p>© Copyright 2025 Devin Pham.</p>
     </footer>
 
-    <script src="../script.js"></script>
-    <script type="module" src="../project-gallery.js"></script>
+    <script src="script.js"></script>
+    <script type="module" src="project-gallery.js"></script>
 </body>
 </html>
