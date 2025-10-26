@@ -254,9 +254,9 @@ class ProjectGallery {
         const icon = document.getElementById('fullscreenIcon');
         
         if (isFullscreen) {
-            icon.src = theme === 'dark' ? 'pictures/minimize-white.svg' : 'pictures/minimize-black.svg';
+            icon.src = theme === 'dark' ? '/pictures/minimize-white.svg' : '/pictures/minimize-black.svg';
         } else {
-            icon.src = theme === 'dark' ? 'pictures/maximize-white.svg' : 'pictures/maximize-black.svg';
+            icon.src = theme === 'dark' ? '/pictures/maximize-white.svg' : '/pictures/maximize-black.svg';
         }
     }
     
@@ -265,9 +265,9 @@ class ProjectGallery {
             // Use white icon on hover regardless of theme
             const icon = document.getElementById('fullscreenIcon');
             if (this.isFullscreen) {
-                icon.src = 'pictures/minimize-white.svg';
+                icon.src = '/pictures/minimize-white.svg';
             } else {
-                icon.src = 'pictures/maximize-white.svg';
+                icon.src = '/pictures/maximize-white.svg';
             }
         } else {
             // Revert to theme-based icon
@@ -338,4 +338,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Import showModal function from helpers
-import { showModal } from './helpers.js';
+import { showModal } from '/helpers.js';
