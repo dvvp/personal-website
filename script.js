@@ -291,11 +291,35 @@ function initSinglePageNavigation() {
         });
     }
     
+    // Scroll to section on page load if hash is present
+    function scrollToHash() {
+        if (window.location.hash) {
+            const targetId = window.location.hash.substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                setTimeout(() => {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
+        }
+    }
+    
     // Update on scroll
     window.addEventListener('scroll', updateActiveNavLink);
     
     // Update on page load
     updateActiveNavLink();
+    scrollToHash();
+    
+    // Handle hash changes (browser back/forward buttons)
+    window.addEventListener('hashchange', () => {
+        scrollToHash();
+        updateActiveNavLink();
+    });
     
     // Handle smooth scrolling for nav links
     navLinks.forEach(link => {
@@ -314,11 +338,17 @@ function initSinglePageNavigation() {
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
+                // Update URL without triggering a page reload
+                window.history.pushState(null, '', `#${targetId}`);
+                
                 // Perform smooth scroll
                 targetSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
+                
+                // Update active nav link
+                updateActiveNavLink();
             }
         });
     });
