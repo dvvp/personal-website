@@ -264,25 +264,23 @@ function initTypingAnimation() {
 // Initialize typing animation when DOM is loaded
 document.addEventListener('DOMContentLoaded', initTypingAnimation);
 
-// Single-page navigation highlighting
 function initSinglePageNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.page-section');
-    let isScrolling = false;
-    
+
     // Function to update active navigation link and URL hash
     function updateActiveNavLink() {
         let currentSection = '';
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 150; // Account for fixed nav
             const sectionHeight = section.offsetHeight;
-            
+
             if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
                 currentSection = section.getAttribute('id');
             }
         });
-        
+
         // Update nav links
         navLinks.forEach(link => {
             link.classList.remove('active');
@@ -290,69 +288,41 @@ function initSinglePageNavigation() {
                 link.classList.add('active');
             }
         });
-        
-        // Update URL hash without triggering scroll
-        if (currentSection && !isScrolling) {
-            // Use replaceState to avoid adding to browser history
-            window.history.replaceState(null, null, `#${currentSection}`);
+
+        // Update the URL hash without scrolling
+        if (currentSection && window.location.hash !== `#${currentSection}`) {
+            history.replaceState(null, '', `#${currentSection}`);
         }
     }
-    
+
     // Update on scroll
     window.addEventListener('scroll', updateActiveNavLink);
-    
+
     // Update on page load
     updateActiveNavLink();
-    
-    // Handle initial hash if present
-    if (window.location.hash) {
-        const hash = window.location.hash.substring(1);
-        const targetSection = document.getElementById(hash);
-        if (targetSection) {
-            isScrolling = true;
-            setTimeout(() => {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                setTimeout(() => { isScrolling = false; }, 1000);
-            }, 100);
-        }
-    }
-    
-    // Handle smooth scrolling for nav links
+
+    // Smooth scroll for nav links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            
-            // Check if this is a cross-page navigation (contains index.html)
-            if (href.includes('index.html')) {
-                // Allow normal navigation for cross-page links
-                return; // Don't prevent default, let browser handle navigation
-            }
-            
-            // For single-page navigation, prevent default and handle smooth scrolling
+            if (!href.startsWith('#')) return; // Skip cross-page links
+
             e.preventDefault();
             const targetId = href.substring(1);
             const targetSection = document.getElementById(targetId);
-            
+
             if (targetSection) {
-                isScrolling = true;
-                // Use history.pushState to update URL in browser history
-                window.history.pushState(null, null, href);
-                
-                // Perform smooth scroll
                 targetSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
-                
-                // Reset scrolling flag after animation completes
-                setTimeout(() => { isScrolling = false; }, 1000);
+
+                // Update URL hash immediately on click
+                history.pushState(null, '', `#${targetId}`);
             }
         });
     });
 }
 
-// Initialize single-page navigation when DOM is loaded
+// Initialize
 document.addEventListener('DOMContentLoaded', initSinglePageNavigation);
