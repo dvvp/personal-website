@@ -22,6 +22,9 @@ class ProjectGallery {
         this.touchEndY = 0;
         this.minSwipeDistance = 50; // Minimum distance for a swipe
         
+        // Swipe hint element
+        this.swipeHint = document.getElementById('swipeHint');
+        
         this.init();
     }
     
@@ -134,6 +137,16 @@ class ProjectGallery {
                 // Swipe left - go to next image
                 this.nextImage();
             }
+            
+            // Hide swipe hint after first swipe
+            this.hideSwipeHint();
+        }
+    }
+    
+    hideSwipeHint() {
+        if (this.swipeHint && !this.swipeHint.classList.contains('hidden')) {
+            // Add hidden class to trigger fade-out animation
+            this.swipeHint.classList.add('hidden');
         }
     }
     

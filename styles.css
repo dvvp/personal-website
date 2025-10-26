@@ -1308,6 +1308,78 @@ html {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Swipe Hint Info Window */
+.swipe-hint {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 10px 16px;
+    box-shadow: 0 8px 32px var(--shadow);
+    z-index: 100;
+    align-items: center;
+    gap: 8px;
+    animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Fade out animation before hiding */
+.swipe-hint.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.swipe-hint-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.swipe-hint .dark-icon {
+    display: none;
+}
+
+[data-theme="dark"] .swipe-hint .dark-icon {
+    display: block;
+}
+
+[data-theme="dark"] .swipe-hint .light-icon {
+    display: none;
+}
+
+.swipe-hint-text {
+    white-space: nowrap;
+}
+
+/* Only show on touchscreen devices */
+@media (hover: none) and (pointer: coarse) {
+    .swipe-hint {
+        display: flex;
+    }
+}
+
+
 .project-gallery:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 48px var(--shadow);
@@ -1603,6 +1675,10 @@ html {
     background: transparent;
 }
 
+.project-gallery.fullscreen .swipe-hint {
+    top: 20px;
+}
+
 .project-gallery.fullscreen .page-counter {
     position: fixed;
     bottom: 20px;
@@ -1666,6 +1742,17 @@ html {
     
     .project-gallery {
         padding: 16px;
+    }
+    
+    .swipe-hint {
+        top: 8px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .swipe-hint-icon {
+        width: 14px;
+        height: 14px;
     }
     
     .gallery-container {
