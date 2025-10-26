@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             // Get the current page filename
-            const currentPage = window.location.pathname.split('/').pop();
+            let currentPage = window.location.pathname.split('/').filter(segment => segment).pop() || 'index.html';
             
             // Check if there's a GitHub repository mapped for this project
             if (GITHUB_REPOSITORIES[currentPage]) {
@@ -338,4 +338,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Import showModal function from helpers
-import { showModal } from './helpers.js';
+import { showModal } from '/helpers.js';
