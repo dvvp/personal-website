@@ -167,9 +167,9 @@ const scrollIcon = scrollToTopButton.querySelector('.scroll-icon');
 function updateScrollIcon() {
     const theme = html.getAttribute('data-theme');
     if (theme === 'dark') {
-        scrollIcon.src = 'pictures/chevron-up-white.svg';
+        scrollIcon.src = '/pictures/chevron-up-white.svg';
     } else {
-        scrollIcon.src = 'pictures/chevron-up-black.svg';
+        scrollIcon.src = '/pictures/chevron-up-black.svg';
     }
 }
 
@@ -184,7 +184,7 @@ window.addEventListener('scroll', () => {
 
 // Change icon to white when button is hovered
 scrollToTopButton.addEventListener('mouseenter', () => {
-    scrollIcon.src = 'pictures/chevron-up-white.svg';
+    scrollIcon.src = '/pictures/chevron-up-white.svg';
 });
 
 scrollToTopButton.addEventListener('mouseleave', () => {
