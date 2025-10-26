@@ -115,6 +115,19 @@ class ProjectGallery {
                 this.touchStartY = e.touches[0].clientY;
             }, { passive: true });
             
+            // Touch move - prevent default browser gestures when swiping
+            galleryContainer.addEventListener('touchmove', (e) => {
+                const currentX = e.touches[0].clientX;
+                const currentY = e.touches[0].clientY;
+                const deltaX = currentX - this.touchStartX;
+                const deltaY = currentY - this.touchStartY;
+                
+                // If horizontal swipe detected, prevent default to stop browser gestures
+                if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > this.minSwipeDistance) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+            
             // Touch end
             galleryContainer.addEventListener('touchend', (e) => {
                 this.touchEndX = e.changedTouches[0].clientX;
