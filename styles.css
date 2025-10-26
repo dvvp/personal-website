@@ -233,7 +233,7 @@ nav a.active {
 /* Single page sections */
 .page-section {
     margin-bottom: 120px;
-    scroll-margin-top: 100px;
+    scroll-margin-top: 200px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(60px);
