@@ -291,35 +291,11 @@ function initSinglePageNavigation() {
         });
     }
     
-    // Scroll to section on page load if hash is present
-    function scrollToHash() {
-        if (window.location.hash) {
-            const targetId = window.location.hash.substring(1);
-            const targetSection = document.getElementById(targetId);
-            
-            if (targetSection) {
-                setTimeout(() => {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }, 100);
-            }
-        }
-    }
-    
     // Update on scroll
     window.addEventListener('scroll', updateActiveNavLink);
     
     // Update on page load
     updateActiveNavLink();
-    scrollToHash();
-    
-    // Handle hash changes (browser back/forward buttons)
-    window.addEventListener('hashchange', () => {
-        scrollToHash();
-        updateActiveNavLink();
-    });
     
     // Handle smooth scrolling for nav links
     navLinks.forEach(link => {
@@ -338,21 +314,52 @@ function initSinglePageNavigation() {
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
-                // Update URL without triggering a page reload
-                window.history.pushState(null, '', `#${targetId}`);
+                // Update the browser URL
+                window.history.pushState(null, null, href);
                 
                 // Perform smooth scroll
                 targetSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
-                
-                // Update active nav link
-                updateActiveNavLink();
             }
         });
     });
 }
 
+// Handle hash URL on page load
+function handleHashOnLoad() {
+    if (window.location.hash) {
+        const hash = window.location.hash.substring(1);
+        const targetSection = document.getElementById(hash);
+        
+        if (targetSection) {
+            // Small delay to ensure page is rendered
+            setTimeout(() => {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
+        }
+    }
+}
+
+// Handle browser back/forward buttons
+window.addEventListener('hashchange', function() {
+    const hash = window.location.hash.substring(1);
+    const targetSection = document.getElementById(hash);
+    
+    if (targetSection) {
+        targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+});
+
 // Initialize single-page navigation when DOM is loaded
-document.addEventListener('DOMContentLoaded', initSinglePageNavigation);
+document.addEventListener('DOMContentLoaded', function() {
+    initSinglePageNavigation();
+    handleHashOnLoad();
+});
