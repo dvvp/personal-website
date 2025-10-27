@@ -378,6 +378,11 @@ function initSinglePageNavigation() {
 
             e.preventDefault();
             
+            // Check if this link is already active
+            if (this.classList.contains('active')) {
+                return; // Don't do anything if already active
+            }
+            
             // Update active nav link immediately
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
