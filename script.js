@@ -173,6 +173,9 @@ function updateScrollIcon() {
     }
 }
 
+// Detect if device supports hover (not a touchscreen device)
+const isHoverSupported = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
 // Show/hide scroll to top button based on scroll position
 window.addEventListener('scroll', () => {
     if (window.pageYOffset > 300) {
@@ -182,14 +185,16 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Change icon to white when button is hovered
-scrollToTopButton.addEventListener('mouseenter', () => {
-    scrollIcon.src = 'pictures/chevron-up-white.svg';
-});
+// Change icon to white when button is hovered (only for non-touchscreen devices)
+if (isHoverSupported) {
+    scrollToTopButton.addEventListener('mouseenter', () => {
+        scrollIcon.src = 'pictures/chevron-up-white.svg';
+    });
 
-scrollToTopButton.addEventListener('mouseleave', () => {
-    updateScrollIcon(); // Revert to theme-based icon
-});
+    scrollToTopButton.addEventListener('mouseleave', () => {
+        updateScrollIcon(); // Revert to theme-based icon
+    });
+}
 
 // Scroll to top when button is clicked
 scrollToTopButton.addEventListener('click', () => {
