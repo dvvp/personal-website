@@ -1,3 +1,9 @@
+/**
+ * ============================================================
+scripts.js for projects
+ * ============================================================
+ */
+
 // Import showModal function from helpers
 import { showModal } from '../helpers.js';
 
