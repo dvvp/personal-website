@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <rect width="1920" height="1080" fill="#050505"/>
+    <polygon points="72,1008 1848,1008 960,108" fill="none" stroke="#1f1f1f" stroke-width="2"/>
+    <polygon points="72,72 1848,72 960,972" fill="none" stroke="#1f1f1f" stroke-width="2"/>
+    <text x="960" y="528" text-anchor="middle" fill="#5a5a5a" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="28" letter-spacing="0.2em">PLACEHOLDER</text>
+    <text x="960" y="580" text-anchor="middle" fill="#3d3d3d" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" letter-spacing="0.08em">Replace with project image</text>
+</svg>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet Monitoring App | Devin Pham</title>
+    <link rel="icon" href="../assets/favicon/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Real-time web operator console for monitoring and controlling fleets of autonomous ground robots — Devin Pham">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Primary">
+            <a class="brand" href="../">Devin Pham</a>
+
+            <div class="nav-group">
+                <div class="contact-links" aria-label="External links">
+                    <a href="https://github.com/dvvp" target="_blank" rel="noreferrer">GitHub</a>
+                    <a href="https://linkedin.com/in/devinpham" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href="mailto:devinpham.ds@gmail.com">Email</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="content" class="page-shell">
+        <div class="project-back">
+            <a href="../#projects">← Projects</a>
+        </div>
+
+        <div class="project-detail-hero">
+            <h1>Fleet Monitoring App</h1>
+            <p class="project-detail-sub">
+                Real-time operator console for monitoring and controlling fleets of autonomous ground robots
+            </p>
+        </div>
+
+        <div class="project-gallery contain-media" tabindex="0">
+            <div class="project-gallery-slide">
+                <img
+                    src="../assets/fleet-monitoring/ea_console_showcase.png"
+                    alt="EssentialAero fleet monitoring dashboards on desktop, laptop, and phone"
+                >
+                <p class="project-gallery-caption">Fleet monitoring dashboard — desktop, laptop, and mobile views</p>
+            </div>
+            <div class="project-gallery-slide">
+                <img
+                    src="../assets/fleet-monitoring/ea_console_dashboard.png"
+                    alt="EA Console fleet dashboard with mission analytics, map view, and droid status"
+                >
+                <p class="project-gallery-caption">Fleet dashboard — analytics, map, and robot status</p>
+            </div>
+            <div class="project-gallery-slide">
+                <video
+                    src="../assets/fleet-monitoring/ea_console_droid_control.webm"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    aria-label="Demo of EA Console robot control interface"
+                ></video>
+                <p class="project-gallery-caption">Robot control — live command dispatch</p>
+            </div>
+            <div class="project-gallery-slide">
+                <video
+                    src="../assets/fleet-monitoring/ea_console_app_pause.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    aria-label="Mobile app view of EA Console with a mission pause control"
+                ></video>
+                <p class="project-gallery-caption">Mobile app — pause control</p>
+            </div>
+            <div class="project-gallery-slide">
+                <img
+                    src="../assets/fleet-monitoring/ea_console_app_robot.jpg"
+                    alt="Operator using the EA Console touchscreen interface on the robot before starting a mission"
+                    loading="lazy"
+                >
+                <p class="project-gallery-caption">On-robot touchscreen — pre-mission operator check before starting</p>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Overview</p>
+            <div class="project-detail-content">
+                <p>
+                    Real-time web-based operator console for monitoring and controlling a fleet of autonomous
+                    ground robots. Bridges a Python/FastAPI backend with a plain HTML/CSS/JS frontend over
+                    REST and WebSocket connections, with flat-file CSV storage keeping the stack lightweight
+                    and easy to deploy.
+                </p>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Technical Implementation</p>
+            <div class="project-detail-content">
+                <p class="project-detail-note">
+                    <strong>⚠️ Note on Source Code</strong><br>
+                    Due to employer confidentiality, source code cannot be shared. This web page contains a
+                    sanitized technical overview and demo materials.
+                </p>
+                <ul>
+                    <li><strong>Backend:</strong> Async REST API and WebSocket server built with FastAPI, handling auth and real-time message routing</li>
+                    <li><strong>Real-time communication:</strong> Singleton WebSocket hub fans out telemetry and commands to robot agents and browser clients simultaneously</li>
+                    <li><strong>Authentication:</strong> JWT-based auth stored as an HttpOnly cookie, verified server-side on every protected request</li>
+                    <li><strong>Authorization:</strong> Middleware guards HTML page routes and blocks non-GET API calls for guest users</li>
+                    <li><strong>Mission history:</strong> WebSocket hub automatically derives history records from the telemetry stream (start/end time, battery consumption, distance, duration)</li>
+                    <li><strong>Geospatial:</strong> Mission circuits stored as GeoJSON and rendered on an interactive map via the Google Maps API</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Key Features</p>
+            <div class="project-detail-content">
+                <ul>
+                    <li><strong>Live fleet dashboard:</strong> Real-time view of all active robots with telemetry updates pushed over WebSocket and automatic client reconnection</li>
+                    <li><strong>Mission management:</strong> Schedule missions against geographic circuits, track active mission status, and browse mission history with multi-field filtering</li>
+                    <li><strong>Mission history export:</strong> Filterable mission history with one-click CSV download for reporting and analysis</li>
+                    <li><strong>Command dispatch:</strong> Developer-role operators can issue real-time commands (start, stop, abort, velocity control) to individual robots or the entire fleet</li>
+                    <li><strong>Alert system:</strong> Review, mark read, and clear alerts with severity levels and type-based filtering</li>
+                    <li><strong>Role-based access control:</strong> Developer and guest roles enforced at both the UI and API layers</li>
+                    <li><strong>Robot detail view:</strong> Per-robot drilldown with live pose, battery trends, mission context, and recent status</li>
+                    <li><strong>Dark mode:</strong> User-selectable theme persisted across sessions</li>
+                    <li><strong>Configurable unit preferences:</strong> Per-user unit settings (metric vs imperial) stored alongside user profiles</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Stack</p>
+            <div class="project-detail-content">
+                <div class="project-detail-tags">
+                    <span class="project-detail-tag">Python</span>
+                    <span class="project-detail-tag">FastAPI</span>
+                    <span class="project-detail-tag">WebSocket</span>
+                    <span class="project-detail-tag">HTML</span>
+                    <span class="project-detail-tag">CSS</span>
+                    <span class="project-detail-tag">JavaScript</span>
+                    <span class="project-detail-tag">Google Maps API</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../gallery.js"></script>
+
+    <footer class="site-footer">
+        <p>Devin Pham</p>
+        <p>2026</p>
+        <div class="footer-links">
+            <a href="https://github.com/dvvp" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/devinpham" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="mailto:devinpham.ds@gmail.com">Email</a>
+        </div>
+    </footer>
+</body>
+</html>

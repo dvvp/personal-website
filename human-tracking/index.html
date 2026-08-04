@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Tracking | Devin Pham</title>
+    <link rel="icon" href="../assets/favicon/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Camera-based human tracking and following algorithm for autonomous mobile robots — Devin Pham">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Primary">
+            <a class="brand" href="../">Devin Pham</a>
+
+            <div class="nav-group">
+                <div class="contact-links" aria-label="External links">
+                    <a href="https://github.com/dvvp" target="_blank" rel="noreferrer">GitHub</a>
+                    <a href="https://linkedin.com/in/devinpham" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href="mailto:devinpham.ds@gmail.com">Email</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="content" class="page-shell">
+        <div class="project-back">
+            <a href="../#projects">← Projects</a>
+        </div>
+
+        <div class="project-detail-hero">
+            <h1>Camera-Based Human Tracking and Following Algorithm for Mobile Robots</h1>
+            <p class="project-detail-sub">
+                Autonomous ground vehicle (AGV) following system using CNNs and Range Imaging
+            </p>
+        </div>
+
+        <div class="project-gallery contain-media" tabindex="0">
+            <div class="project-gallery-slide">
+                <img
+                    src="../assets/human-tracking/architecture.png"
+                    alt="System architecture diagram for the camera-based human tracking pipeline"
+                    loading="lazy"
+                >
+                <p class="project-gallery-caption">System architecture diagram</p>
+            </div>
+            <div class="project-gallery-slide">
+                <video
+                    src="../assets/human-tracking/human_tracking_sim.mov"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    aria-label="Gazebo simulation of camera-based human tracking on a mobile robot"
+                ></video>
+                <p class="project-gallery-caption">Gazebo simulation — end-to-end tracking pipeline</p>
+            </div>
+            <div class="project-gallery-slide">
+                <video
+                    src="../assets/human-tracking/human_tracking_irl_detection.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    aria-label="Real-world human detection and tracking on a mobile robot"
+                ></video>
+                <p class="project-gallery-caption">Real robot — live detection + tracking</p>
+            </div>
+            <div class="project-gallery-slide">
+                <video
+                    src="../assets/human-tracking/human_tracking_timelapse.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    aria-label="Timelapse of camera-based human tracking on a mobile robot"
+                ></video>
+                <p class="project-gallery-caption">Timelapse — following behavior in a controlled environment</p>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Overview</p>
+            <div class="project-detail-content">
+                <p>
+                    Developed a camera-based human tracking pipeline to enable the safe and efficient
+                    relocation of airport robots. This algorithm detects and tracks human movement in
+                    real time using a CNN and a 3D depth camera to create a dynamic path plan.
+                </p>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Technical Implementation</p>
+            <div class="project-detail-content">
+                <p class="project-detail-note">
+                    <strong>⚠️ Note on Source Code</strong><br>
+                    Due to employer confidentiality, source code cannot be shared. This web page contains a
+                    sanitized technical overview and demo materials.
+                </p>
+                <ul>
+                    <li><strong>ROS2 node:</strong> Developed a ROS2 node that subscribes to an Intel RealSense D455's RGB and depth streams along with the camera info containing its camera intrinsics</li>
+                    <li><strong>Tracking model:</strong> Used Ultralytics' YOLOv11 tracking model to publish an annotated image and an ENU pose</li>
+                    <li><strong>Simulation:</strong> Created a Python script to generate custom Gazebo SDF worlds for simulation</li>
+                    <li><strong>Deployment:</strong> Built and optimized CUDA-enabled Dockerfiles to enable GPU-acceleration on an NVIDIA Jetson Orin NX</li>
+                    <li><strong>Operator UI:</strong> Built an app using HTML and Javascript to adjust parameters, toggle tracking, and visualize the current person being tracked in real time</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Key Features</p>
+            <div class="project-detail-content">
+                <ul>
+                    <li><strong>Multi-person tracking:</strong> Distinguishes between multiple people in a scene</li>
+                    <li><strong>Real-time inference:</strong> Detection publishes at 10 Hz with GPU-acceleration enabled</li>
+                    <li><strong>Following behavior:</strong> Maintains a fixed distance between the robot and the tracked person (adaptive cruise control)</li>
+                    <li><strong>Navigation integration:</strong> Seamless integration with ROS navigation stack</li>
+                    <li><strong>Validation:</strong> Comprehensive testing in simulation as well as real life</li>
+                    <li><strong>Tunable parameters:</strong> Tracking parameters can be adjusted before tracking is toggled</li>
+                    <li><strong>Live visualization:</strong> Visualization occurs in real time</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Results &amp; Future Work</p>
+            <div class="project-detail-content">
+                <p>
+                    The system successfully worked on the sim as well as the real robot. In the future,
+                    planned enhancements include integrating gesture-based control to
+                    remove the dependence of a carried mobile device and enabling more intuitive
+                    human-robot interaction. Additionally, implementing facial recognition will allow
+                    the system to identify authorized personnel, ensuring only those approved can be
+                    followed which will enhance overall security.
+                </p>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Stack</p>
+            <div class="project-detail-content">
+                <div class="project-detail-tags">
+                    <span class="project-detail-tag">ROS2</span>
+                    <span class="project-detail-tag">Python</span>
+                    <span class="project-detail-tag">HTML</span>
+                    <span class="project-detail-tag">JS</span>
+                    <span class="project-detail-tag">OpenCV</span>
+                    <span class="project-detail-tag">Gazebo</span>
+                    <span class="project-detail-tag">Computer Vision</span>
+                    <span class="project-detail-tag">Deep Learning</span>
+                    <span class="project-detail-tag">YOLO</span>
+                    <span class="project-detail-tag">HRI</span>
+                    <span class="project-detail-tag">CUDA</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../gallery.js"></script>
+
+    <footer class="site-footer">
+        <p>Devin Pham</p>
+        <p>2026</p>
+        <div class="footer-links">
+            <a href="https://github.com/dvvp" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/devinpham" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="mailto:devinpham.ds@gmail.com">Email</a>
+        </div>
+    </footer>
+</body>
+</html>

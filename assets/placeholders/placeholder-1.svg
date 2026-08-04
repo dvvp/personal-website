@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <rect width="1920" height="1080" fill="#050505"/>
+    <rect x="72" y="72" width="1776" height="936" fill="none" stroke="#2a2a2a" stroke-width="2"/>
+    <line x1="72" y1="540" x2="1848" y2="540" stroke="#1a1a1a" stroke-width="1"/>
+    <line x1="960" y1="72" x2="960" y2="1008" stroke="#1a1a1a" stroke-width="1"/>
+    <text x="960" y="528" text-anchor="middle" fill="#5a5a5a" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="28" letter-spacing="0.2em">PLACEHOLDER</text>
+    <text x="960" y="580" text-anchor="middle" fill="#3d3d3d" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" letter-spacing="0.08em">Replace with project image</text>
+</svg>

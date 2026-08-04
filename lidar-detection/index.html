@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiDAR-Based Detection of Planar Surfaces | Devin Pham</title>
+    <link rel="icon" href="../assets/favicon/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="LiDAR-based planar surface detection for robotic process monitoring — Devin Pham">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="site-header">
+        <nav class="top-nav" aria-label="Primary">
+            <a class="brand" href="../">Devin Pham</a>
+
+            <div class="nav-group">
+                <div class="contact-links" aria-label="External links">
+                    <a href="https://github.com/dvvp" target="_blank" rel="noreferrer">GitHub</a>
+                    <a href="https://linkedin.com/in/devinpham" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href="mailto:devinpham.ds@gmail.com">Email</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="content" class="page-shell">
+        <div class="project-back">
+            <a href="../#projects">← Projects</a>
+        </div>
+
+        <div class="project-detail-hero">
+            <h1>LiDAR-Based Detection of Planar Surfaces for Robotic Process Monitoring</h1>
+            <p class="project-detail-sub">
+                Detecting and analyzing planar surfaces in industrial environments to enable precise
+                robotic process monitoring and quality control
+            </p>
+        </div>
+
+        <div class="project-gallery contain-media" tabindex="0">
+            <div class="project-gallery-slide">
+                <img
+                    class="contain"
+                    src="../assets/lidar-detection/fod_mat_detection_flowchart.jpeg"
+                    alt="Flowchart: LiDAR ROI preprocessing, plane segmentation with RANSAC, and proceed versus stop decision logic"
+                >
+                <p class="project-gallery-caption">Pipeline flowchart — ROI preprocessing, RANSAC plane segmentation, and proceed/stop decision</p>
+            </div>
+            <div class="project-gallery-slide">
+                <video
+                    src="../assets/lidar-detection/fod_mat_not_nominal.webm"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    aria-label="RViz2 point cloud demo with ROI bounding boxes (misaligned)"
+                ></video>
+                <p class="project-gallery-caption">RViz2 demo — misalignment detected (point cloud + ROI bounding boxes)</p>
+            </div>
+            <div class="project-gallery-slide">
+                <video
+                    src="../assets/lidar-detection/fod_mat_nominal.webm"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    aria-label="RViz2 point cloud demo with ROI bounding boxes (nominal alignment)"
+                ></video>
+                <p class="project-gallery-caption">RViz2 demo — nominal alignment (point cloud + ROI bounding boxes)</p>
+            </div>
+            <div class="project-gallery-slide">
+                <video
+                    src="../assets/lidar-detection/fod_mat_irl.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    aria-label="Real-world LiDAR-based detection demo"
+                ></video>
+                <p class="project-gallery-caption">Real-world demo — nominal disposal-station entry process</p>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Overview</p>
+            <div class="project-detail-content">
+                <p>
+                    This project focuses on improving the safety and reliability of an autonomous airport
+                    debris-removal robot. The robot uses a trailing FOD sweeping mat to collect foreign
+                    object debris from airport surfaces, and the mat is guided through a disposal station
+                    using a rail-and-wheel mechanism. Because the mat has slack while being pulled behind
+                    the vehicle, it can become misaligned as it approaches or enters the disposal station.
+                </p>
+                <p>
+                    To prevent damage to the robot, mat, or disposal mechanism, the system uses LiDAR data
+                    to detect mat misalignment in real time. When the algorithm determines that the mat is
+                    misaligned beyond an acceptable threshold, it sends a stop command to the robot;
+                    otherwise, the robot continues operating normally.
+                </p>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Technical Implementation</p>
+            <div class="project-detail-content">
+                <p class="project-detail-note">
+                    <strong>⚠️ Note on Source Code</strong><br>
+                    Due to employer confidentiality, source code cannot be shared. This web page contains a
+                    sanitized technical overview and demo materials.
+                </p>
+                <ul>
+                    <li><strong>LiDAR input:</strong> LiDAR point cloud data is collected from the robot’s sensing system and used as the primary input for alignment detection</li>
+                    <li><strong>ROI preprocessing:</strong> Region of Interest preprocessing is performed to isolate the relevant portions of the FOD mat from the larger LiDAR scene</li>
+                    <li><strong>Left ROI extraction:</strong> A Crop Hull filter is used to extract the left-side ROI of the mat</li>
+                    <li><strong>Right ROI extraction:</strong> A separate Crop Hull filter is used to extract the right-side ROI of the mat</li>
+                    <li><strong>Plane estimation:</strong> RANSAC plane segmentation is applied independently to the left and right mat regions to estimate the orientation of each half</li>
+                    <li><strong>Angle comparison:</strong> The angle of the detected plane on the left side of the mat is compared against the angle of the detected plane on the right side and the absolute difference is calculated</li>
+                    <li><strong>Stop condition:</strong> If the angle difference exceeds a predefined threshold, the algorithm classifies the mat as misaligned and sends a stop command to the robot</li>
+                    <li><strong>Proceed condition:</strong> If the angle difference remains within the acceptable threshold, the system allows the robot to proceed</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Key Features</p>
+            <div class="project-detail-content">
+                <ul>
+                    <li><strong>Real-time detection:</strong> Real-time LiDAR-based detection of FOD mat misalignment</li>
+                    <li><strong>Split-ROI approach:</strong> Separate ROI extraction for the left and right sides of the mat to improve detection accuracy</li>
+                    <li><strong>Crop Hull filtering:</strong> Crop Hull filtering to reduce noise and focus only on relevant mat geometry</li>
+                    <li><strong>Robust segmentation:</strong> RANSAC plane segmentation for robust orientation estimation, even with imperfect point cloud data</li>
+                    <li><strong>Simple control logic:</strong> Threshold-based decision-making for simple and reliable stop-or-go control</li>
+                    <li><strong>Safety-focused:</strong> Safety-focused design that helps prevent mechanical damage during disposal station entry</li>
+                    <li><strong>Integration-ready:</strong> Integration-ready logic for autonomous ground vehicle control systems</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Results &amp; Future Work</p>
+            <div class="project-detail-content">
+                <p>
+                    The LiDAR-based misalignment detection algorithm provides a reliable method for monitoring
+                    the FOD mat as it moves through the disposal station. By separating the mat into left and
+                    right regions, estimating each side’s plane orientation, and comparing the resulting
+                    angles, the system can detect when the mat is no longer properly aligned and respond with
+                    a stop command before a mechanical issue occurs.
+                </p>
+                <p>
+                    Future work could include tuning the angle threshold through field testing, improving
+                    robustness under different lighting and surface conditions, adding temporal filtering to
+                    reduce false positives, and integrating the algorithm more tightly with the robot’s
+                    motion-planning system so that the vehicle can not only stop, but potentially correct the
+                    mat alignment autonomously.
+                </p>
+            </div>
+        </div>
+
+        <div class="project-detail-sections">
+            <p class="project-detail-label">Stack</p>
+            <div class="project-detail-content">
+                <div class="project-detail-tags">
+                    <span class="project-detail-tag">ROS2</span>
+                    <span class="project-detail-tag">C++</span>
+                    <span class="project-detail-tag">PCL</span>
+                    <span class="project-detail-tag">RANSAC</span>
+                    <span class="project-detail-tag">LiDAR</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../gallery.js"></script>
+
+    <footer class="site-footer">
+        <p>Devin Pham</p>
+        <p>2026</p>
+        <div class="footer-links">
+            <a href="https://github.com/dvvp" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/devinpham" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="mailto:devinpham.ds@gmail.com">Email</a>
+        </div>
+    </footer>
+</body>
+</html>
